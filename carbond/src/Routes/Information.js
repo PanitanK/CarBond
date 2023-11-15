@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Title from './image/logo/TitleCB.png';
 import LOCKER from './image/svg/locker.svg';
+import CSink from './image/Data/CSink.png';
+import RainMap from './image/Data/RainMap.png';
 import './css/App.css';
 import MK2 from './image/logo/MK2.png';
 import LineChart from './LineChart';
@@ -51,7 +53,59 @@ function info() {
           <LineChart />
         </div>
       </div>
-    
+
+      <div className="container2">
+        <div className="rectangle5">
+
+          <h1>ปีที่ดีที่สุดของเรา ( 2010 ) ได้ผ่านมาแล้ว 13 ปี </h1>
+          <h1>ในปัจจุบันยางไทยอยู่ในจุดอิ่มตัวและเข้าสู่</h1>
+          <h1>Point of Diminishing Return </h1>
+   
+        </div>
+      </div>
+
+      <div className="container3">
+        <h1>หมายความว่า หากภาครัฐต้องการเพิ่มกำลังผลิตยาง</h1>
+        <h1>แทนที่จะทำให้ได้รายได้เพิ่มขึ้น </h1>
+        <h1>กลับกันจะทำให้ปริมาณยางในตลาดมีมาก </h1>
+        <h1>ทำให้ราคายางตกยิ่งกว่าเดิม</h1>
+      </div>
+
+      <div className="container2Plus">
+        <div className="rectangle5">
+
+          <h1>วิธีแก้ปัญหาตรงไปตรงมา คือ ลดกำลังการผลิตยาง  </h1>
+          <h1>คำพูดนี้เหมือนจะง่ายแต่จะมีผลกระทบต่อสวนยางที่ได้ลงทุนไปแล้ว</h1>
+          <h1>คงจะไม่มีใครยอมขาดทุนเว้นแต่จะมีทาง ชดเชยเงินส่วนต่าง </h1>
+   
+        </div>
+      </div>
+
+      <div className="container3">
+        <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
+        <h1> แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง</h1>
+        <h1>ที่สามารถทำ Carbon Offset ได้ </h1>
+        <h1>โดยจะต้องแรกเปลี่ยนในรูปของ Carbon Credit</h1>
+        <h1>นี้เป็นการยกผลประโยชน์ให้แก่ประเทศที่มี Carbon Sink Potential</h1>
+      </div>
+
+      <div className="container2Plus2">
+        <div className="rectangle5">
+
+          <h1>Carbon Sink Potential Map</h1>
+          <img src={CSink} alt="UGBN" className="CSink" />
+
+        <div className="Southern">
+          <img src={RainMap} alt="UGBN" className="RainMap" />
+
+          <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
+        <h1> แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง</h1>
+        <h1>ที่สามารถทำ Carbon Offset ได้ </h1>
+        <h1>โดยจะต้องแรกเปลี่ยนในรูปของ Carbon Credit</h1>
+        <h1>นี้เป็นการยกผลประโยชน์ให้แก่ประเทศที่มี Carbon Sink Potential</h1>
+        </div>
+      </div>
+      </div>
     
     </div>
   );

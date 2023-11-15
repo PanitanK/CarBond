@@ -247,7 +247,7 @@
   flex-direction: column;
   
   justify-content: center;
-  padding-bottom: 80px;
+  padding-bottom: 0px;
 }
 
 .container3 h1{
@@ -258,7 +258,46 @@
 .chart-container {
   /* Adjust as needed */
   width: 80%;
-  height: 50%;
+  height: 300px;
 
   border: 2px solid black;
+}
+
+.container2Plus {
+  margin-top: 6%;
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 50vh; /* 10% of the viewport height */
+  background-color: #02122B; /* Green color, change as needed */
+}
+
+.container2Plus h1{
+  font-size: 32px;
+
+}
+
+.CSink {
+  width: 80%;
+}
+
+.container2Plus2 {
+  margin-top: 6%;
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 200vh; /* 10% of the viewport height */
+  background-color: #02122B; /* Green color, change as needed */
+}
+
+.RainMap {
+  height: 500px;
+}
+
+.Southern {
+  display: flex;
+}
+
+.Southern h1 {
+  font-size: 20px;
 }
