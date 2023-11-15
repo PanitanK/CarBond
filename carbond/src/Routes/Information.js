@@ -3,7 +3,7 @@ import Title from './image/logo/TitleCB.png';
 import LOCKER from './image/svg/locker.svg';
 import './css/App.css';
 import MK2 from './image/logo/MK2.png';
-
+import LineChart from './LineChart';
 
 function info() {
 
@@ -45,6 +45,12 @@ function info() {
         </div>
       </div>
 
+      <div className="container3">
+        <h1>ประเทศไทยเป็นทั้งผู้ผลิตและส่งออกยางอันดับหนึ่งของโลกตั้งแต่ปี 1991</h1>
+        <div className="chart-container">
+          <LineChart />
+        </div>
+      </div>
     
     
     </div>

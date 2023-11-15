@@ -235,3 +235,30 @@
   margin-top: 20px;
   margin-bottom: -10px;
 }
+
+.container3 {
+
+  justify-content:center;
+  align-items:center;
+  height: 50%; /* 10% of the viewport height */
+  background-color: #ffffff; /* Green color, change as needed */
+  
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
+.container3 h1{
+  color: black;
+  font-size: 32px;
+}
+
+.chart-container {
+  /* Adjust as needed */
+  width: 80%;
+  height: 50%;
+
+  border: 2px solid black;
+}
