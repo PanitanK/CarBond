@@ -1,14 +1,19 @@
-import Title from './image/logo/CBX_Transparent.png';
-import Gear from './image/logo/gear.png';
-
-import Placeholder from './image/logo/Placeholder.png'
+import Title from './image/logo/TitleCB.png';
+import './css/App.css';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from './Firebase';
 import {  collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import Setting from './Setting'; 
-import PlotComponent from './PlotComponent';
-import StaticMapComponent from './StaticMapComponent';
+
+import HomeIcon from './image/svg/Home.png';
+import RequestIcon from './image/svg/Request.png';
+import ResearchIcon from './image/svg/Research.png';
+import PartnersIcon from './image/svg/Partners.png';
+import MarketIcon from './image/svg/Market.png';
+
+
+import { Link } from "react-router-dom";
+import LOCKER from './image/svg/locker.svg';
 
 function Home() {
   //var fetchcount = 0;
@@ -18,11 +23,16 @@ function Home() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [HasFetched, setFetch] = useState(false);
-  const [showSetting, setShowSetting] = useState(false); // State to track whether to show Setting component
+  //const [showSetting, setShowSetting] = useState(false); // State to track whether to show Setting component
   const [plotDocuments, setplotDocuments] = useState([])
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [MaximumCredit , setMaximumCredit] = useState(0);
+  //const [showDropdown, setShowDropdown] = useState(false);
 
+  const [MaximumCredit , setMaximumCredit] = useState(0);
+  const handleNavigation = (path) => {
+    // Use the navigate function to navigate to the specified path
+    navigate(path);
+  };
+  
   
  
   const fetchPlotDocuments = async (userUID) => {
@@ -42,24 +52,13 @@ function Home() {
   };
   
 
-
-  const PlotReg = () => {
-    navigate('/Plotregister',{ state: { userUID } });
-  };
-
-  const handleGearClick = () => {
-    setShowDropdown(!showDropdown);
-  };
-  const handleDataUpdate = () => {
-    setFetch(false);
-  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         const userDocRef = doc(userCollectionRef, userUID);
         const userDocSnapshot = await getDoc(userDocRef);
         const plotDocuments = await fetchPlotDocuments(userUID);
-        //console.log('Plot Documents:', plotDocuments[1].Plot_Number);
+    
         setplotDocuments(plotDocuments)
 
         var sum = 0;
@@ -108,129 +107,50 @@ function Home() {
     return (
       <div className="App">
         <div className="static-bar">
-          <div className="left-content">
-          <img
-            src={Title}
-            alt="Title"
-            onClick={() => {
-              navigate('/Home', { state: { userUID } });
-              setShowSetting(false);
-            }}
-            style={{ cursor: 'pointer' }} 
-          />
-          </div>
-          <div className="right-content">
-            {userData && userData.length > 0 ? (
-              <h2>USER : {userData[0].Name}</h2>
-            ) : (
-              <h2>User data not available</h2>
-            )}
-            <div className="gear-link" onClick={handleGearClick}>
-              <img src={Gear} alt="Gear" className="gear" />
-              {showDropdown && (
-                <div className="dropdown">
-
-                  <button onClick={() => {
-                    navigate('/Home', { state: { userUID } })
-                    setShowSetting(false); }
-                  }>
-                    Home
-                  </button>
-
-                  <button onClick={() => {
-                    navigate('/Print', { state: { userUID,userData, plotDocuments, MaximumCredit } })
-                    setShowSetting(false); }
-                  }>
-                    Print
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setShowSetting(true); 
-                      navigate('/Home/Setting', { state: { userUID } });
-                    }}
-                  >
-                    Setting
-                  </button>
-
-                  <button onClick={() => navigate("/")}>
-                    Logout  
-                  </button>
-
-                </div>
-              )}
-            </div>
-          </div>
+        <div className="left-content">
+          <Link to="/">
+            <img className="title-image" src={Title} alt="Title" />
+          </Link>
         </div>
+        <Link to="/login" className="green-box">
+          <img src={LOCKER} alt="UGBN" className="Locker" />
+          <h1 className="green-box-text">Wei Shen</h1>
+        </Link>
 
-        <div className="App-header">
-        {showSetting ? (
-          <Setting userUID={userUID} onDataUpdate={handleDataUpdate} /> 
-        ) : (
-
-          <div className='Home-Page'>
-            <h1 class="primary-header10">Welcome back {userData[0].Name}</h1>
-            <p class="primary-header5">Your Hometown is {userData && userData[0].Hometown}</p>
-            
-
-
-            <div className="credential-box">
-              <div className='StaticMapBox'>
-                <StaticMapComponent initialCenter={{ lat: userData[0].Latitude, lng: userData[0].Longitude,PlotDoc:plotDocuments }} />  
-              </div>
-
-             
-              <div className="info-container">
-              <img className="image" src={Placeholder} alt="Placeholder"></img>
-                <div>
-                  <span className="info-label">Firstname :</span>
-                  <span className="info-value">{userData[0].FirstName}</span>
-                </div>
-                <div>
-                  <span className="info-label">Lastname :</span>
-                  <span className="info-value">{userData[0].LastName}</span> 
-                </div>
-                <div>
-                  <span className="info-label">Issued Date:</span>
-                  <span className="info-value">{userData[0].Created_Date}</span>
-                </div>
-                <div>
-                  <span className="info-label">Expiration Date:</span>
-                  <span className="info-value">{userData[0].Expiry_Date}</span>
-                </div>
-                <div>
-                  <span className="info-label">Province of Issued :</span>
-                  <span className="info-value">{userData[0].Hometown}</span>
-                </div>
-                <div>
-                  <span className="info-label">Credit owned : </span>
-                  <span className="Credit-own">{userData[0].Credit_Own}</span>
-                  <span className="info-label"> Credits</span>
-                </div>
-
-                <div>
-                  <span className="info-label">Maximum Credit Cap: </span>
-                  <span className="Credit-own">{MaximumCredit.toFixed(2)}</span>
-                  <span className="info-label"> Credits/year</span>
-                </div>
-
-              </div>
-            </div>
-
-
-          {plotDocuments.map((plot, index) => (
-          <PlotComponent key={`${plot.id}-${index}`} plot={plot} plotIndex={index + 1} />
-        ))}
-           <div className='AddPlot'>  
-            <button class="submit-button" onClick={PlotReg} >+ Add New Plot</button>
-          </div>
-        </div>
-   
-        )}
-        <footer className="footer">
-        <p></p>
-        </footer>
       </div>
+      <div className='Dashboard'>
+        
+      <div className="sidebar">
+        <div className="sidebar-option" onClick={() => handleNavigation('/option1')}>
+          <img src={HomeIcon} alt="UGBN" className="IconClass" />
+          <span>Home</span>
+        </div>
+        <div className="sidebar-option" onClick={() => handleNavigation('/option2')}>
+          <img src={RequestIcon} alt="UGBN" className="IconClass" />
+          <span>Request</span>
+        </div>
+        <div className="sidebar-option" onClick={() => handleNavigation('/option3')}>
+          <img src={ResearchIcon} alt="UGBN" className="IconClass" />
+          <span>Research</span>
+        </div>
+        <div className="sidebar-option" onClick={() => handleNavigation('/option4')}>
+          <img src={PartnersIcon} alt="UGBN" className="IconClass" />
+          <span>Partners</span>
+        </div>
+        <div className="sidebar-option" onClick={() => handleNavigation('/option5')}>
+          <img src={MarketIcon} alt="UGBN" className="IconClass" />
+          <span>Market</span>
+        </div>
+      </div>
+      
+    </div>
+    <div className='ContentBoard'>
+      <h1>555</h1>
+      <h1>555</h1>
+
+    </div>
+    
+
     </div>
     );
   }

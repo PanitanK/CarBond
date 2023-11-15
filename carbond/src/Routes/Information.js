@@ -3,11 +3,18 @@ import Title from './image/logo/TitleCB.png';
 import LOCKER from './image/svg/locker.svg';
 import CSink from './image/Data/CSink.png';
 import RainMap from './image/Data/RainMap.png';
+import RubberTree from './image/Data/RubberTree.png';
 import './css/App.css';
 import MK2 from './image/logo/MK2.png';
 import LineChart from './LineChart';
+import { useNavigate } from 'react-router-dom';
+function Info() {
 
-function info() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    // Navigate to the "/info" route
+    navigate('/Home' , { state: { userUID: "T8qpBOb5mkTsQUjagbq3UmwePMq2"} });
+  };
 
   return (
     <div className="App">
@@ -106,9 +113,40 @@ function info() {
         </div>
       </div>
       </div>
+
+      <div className="container3X">
+      <img src={RubberTree} alt="UGBN" className="RubberTree" />
+        <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
+        
+      </div>
+
+      <div className="container2Plus">
+        <div className="rectangle5">
+
+          <h1>ผลตอบแทนจาก Carbon Credit ต่อไร่</h1>
+         
+   
+        </div>
+      </div>
+
+      <div className="container2Plus">
+        <div className="rectangle5">
+
+          <h1>เรายังสามารถทำได้ดีกว่านี้ นำ Carbon Credit ไทยเข้าสู่ตลาดสากล</h1>
+          <h1>และพัฒนาความสามารถในการดูดซับ CO2 ของสวนยางกัน</h1>
+          <h1>เรามาตามหาโอกาสใหม่ๆ ด้วยกันไหม </h1>
+          <div className="rectangle2" onClick={handleClick} >
+            <h1>คลิกที่นี่เลย !</h1>
+       
+            </div>
+   
+        </div>
+      </div>
+
+
     
     </div>
   );
 }
 
-export default info;
+export default Info;
