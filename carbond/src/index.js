@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import './index.css';
-
+import Info from './Routes/Information';
 import App from './Routes/App';
 import Err from './Routes/Err'
 import Login from './Routes/Login';
@@ -25,6 +25,8 @@ const router = createBrowserRouter([
     errorElement: <Err />,
     element:  <App/>,
   },
+
+
   {
     path: "/Mapframe",
     
@@ -71,6 +73,11 @@ const router = createBrowserRouter([
   {
     path: "Print",
     element:<Print/>
+  },
+  {
+    path: "/info",
+    errorElement: <Err />,
+    element: <Info/>
   }
 ]);
 

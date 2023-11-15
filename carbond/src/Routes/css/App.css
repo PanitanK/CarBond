@@ -98,3 +98,140 @@
   padding-right: 5%;
 
 }
+
+.container {
+  margin-top: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28vh; /* 10% of the viewport height */
+  background-color: #02122B; /* Green color, change as needed */
+}
+
+.rectangle {
+  width: 100vw; /* 100% of the viewport width */
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  /* Add any other styles as needed */
+}
+
+.MiddleContent{
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  height: 100%; /* Make sure the span takes the full height of the parent */
+}
+
+.Component1 {
+  margin-top: 0%;
+  margin-left: 10%;
+  width: 80%;
+  height: 10%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rectangle2 {
+  
+  width: 100%;
+  height: 80px; /* Set the desired height */
+  background-color: #38991C; /* Set your desired background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 0%;
+  box-sizing: border-box; /* Include the border in the box model */
+}
+
+/* Style for text inside the rectangle */
+.rectangle2 h2 {
+  color: #ffffff; /* Set the text color */
+}
+
+.center-table {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*border: 2px solid black;*/
+ 
+}
+
+.my-table {
+  width: 80%; /* Adjust the width as needed */
+  border-collapse: collapse;
+  /*border: 2px solid black;*/
+}
+
+.table-header {
+  width: 50%; /* Each column takes 50% of the table width */
+  /*border: 2px solid black;*/
+  
+  text-align: center;
+}
+
+.table-cell {
+  width: 50%;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.rectangle3 {
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: 120px; /* Set the desired height */
+  background-color: #02122B; /* Set your desired background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  
+  box-sizing: border-box; /* Include the border in the box model */
+}
+
+.rectangle3 h1 {
+  color: white;
+  font-size: 30px;
+}
+
+.rectangle5 {
+  width: 80vw; /* 100% of the viewport width */
+  text-align: left;
+  color: white;
+  font-size: 24px;
+  /* Add any other styles as needed */
+  /*border: 2px solid rgb(255, 255, 255);*/
+  margin-left: 5vw;
+}
+
+.container2 {
+  margin-top: 6%;
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 70vh; /* 10% of the viewport height */
+  background-color: #02122B; /* Green color, change as needed */
+}
+
+.MiddleContent2 {
+  display: flex;
+  flex-direction: row; /* Align content in a row */
+  align-items: center; /* Center items vertically within each row */
+  margin-bottom: -70px; /* Adjust the value to control the vertical spacing */
+}
+
+.title-image2{
+  margin-left: -20px;
+  height: 100px; /* Set the desired height for the title image */
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
