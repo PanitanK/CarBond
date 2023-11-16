@@ -315,7 +315,7 @@
 }
 
 .RubberTree {
-  width: 20%;
+  width: 22%;
 }
 
 .container3X{
@@ -325,7 +325,7 @@
   background-color: #ffffff; /* Green color, change as needed */
   
   display: flex;
-
+  margin-left: 10vh;
 
 }
 
@@ -417,4 +417,40 @@
 
 .SouthTextBox {
   padding-left: 50px;
+}
+
+.FigureBox {
+  width: 80vh;
+  text-align: center;
+  margin-left: -16vh;
+}
+
+
+.FigureValue {
+  font-size: 50px;
+  color: #38991C;
+}
+
+.Table {
+  /*background-color: #02122B; /* Green color, change as needed */
+
+  display: flex;
+  flex-direction: column;
+}
+
+.TableRow {
+  display: flex;
+}
+
+.TableColumn {
+  flex: 1;
+  text-align: left;
+  
+}
+
+.Para {
+  text-align: left;
+}
+.ParaText {
+  padding-left: 10vh;
 }

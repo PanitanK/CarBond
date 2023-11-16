@@ -217,34 +217,59 @@ function Info() {
       </div>
 
       <div className="container3X">
-      <img src={RubberTree} alt="UGBN" className="RubberTree" />
+        <img src={RubberTree} alt="UGBN" className="RubberTree" />
 
        
-      <div>
-        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
-   
-        <h1  style={{ color: '#38991C' ,fontStyle:'italic'}}   >Hevea brasiliensis </h1>
-          <h1>หรือ ต้นยางพารา</h1>
-        
-  
-        </span>
+      <div className="Para">
+        <div className="ParaText">
+          <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+          <h1  style={{ color: '#38991C' ,fontStyle:'italic'}}   >Hevea brasiliensis </h1>
+            <h1>หรือ ต้นยางพารา</h1>
+          </span>
 
-        <div style={{ lineHeight: '0', marginTop:'5vh'}}>
-        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
-          <h1>  ในประเทศไทยปลูกต้นยางอยู่ </h1>
-          <h1 style={{ color: '#38991C' }}  >   22 ล้านไร่ </h1>
-          
-        </span>
-        <h3 >( สำนักงานปลัดกระทรวงเกษตรและสหกรณ์ 2023 )</h3>
+          <div style={{ lineHeight: '0', marginTop:'5vh'}}>
+          <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+            <h1>  ในประเทศไทยปลูกต้นยางอยู่ </h1>
+            <h1 style={{ color: '#38991C' }}  >   22 ล้านไร่ </h1>
+            
+          </span>
+          <h3 >( สำนักงานปลัดกระทรวงเกษตรและสหกรณ์ 2023 )</h3>
         </div>
+
+
+        <div className="Table">
+          <div className="TableRow">
+            <div className="TableColumn">
+              {/* First FigureBox */}
+              <div className="FigureBox">
+                <h1 className="FigureHeader" style={{ color: "black" }}>ผลผลิตทั้งประเทศ</h1>
+                <h1 className="FigureValue" style={{ fontSize: "80px", lineHeight: '0' }}>5</h1>
+                <h1 className="FigureDescription" style={{ color: "black", fontSize: "30px" }}>ล้านตัน/ปี</h1>
+              </div>
+            </div>
+
+            <div className="TableColumn">
+              {/* Second FigureBox */}
+              <div className="FigureBox">
+                <h1 className="FigureHeader" style={{ color: "black" }}>ดูดซับ CO2 จากบรรยากาศ</h1>
+                <h1 className="FigureValue" style={{ fontSize: "80px", lineHeight: '0' }}>28.6</h1>
+                <h1 className="FigureDescription" style={{ color: "black", fontSize: "30px" }}>ล้านตัน/ปี</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        
       </div>
-      </div>
+    </div>
 
       <div className="container2Plus">
         <div className="rectangle5">
 
           <h1>ผลตอบแทนจาก Carbon Credit ต่อไร่</h1>
-         
+
+     
    
         </div>
       </div>
