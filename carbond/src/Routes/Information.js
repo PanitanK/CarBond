@@ -15,7 +15,7 @@ function Info() {
     // Navigate to the "/info" route
     navigate('/Home' , { state: { userUID: "T8qpBOb5mkTsQUjagbq3UmwePMq2"} });
   };
-
+/*
   const RubberRevDataset = {
     labels: [
       '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2016',
@@ -38,9 +38,9 @@ function Info() {
       },
     ],
   };
-  
+  */
 
-  console.log(RubberRevDataset)
+
 
 
   return (
@@ -88,30 +88,62 @@ function Info() {
         </div>
       </div>
 
-      <div className="container2">
+      <div className="container2XE">
         <div className="rectangle5">
-
-          <h1>ปีที่ดีที่สุดของเรา ( 2010 ) ได้ผ่านมาแล้ว 13 ปี </h1>
-          <h1>ในปัจจุบันยางไทยอยู่ในจุดอิ่มตัวและเข้าสู่</h1>
-          <h1>Point of Diminishing Return </h1>
+          <span className="MiddleContent2">
+          <h1>เราผ่านจุด</h1>
+          <h1 style={{ color: '#38991C' }}> สูงสุดของเราในปี 2010 </h1>
+          <h1>มาแล้ว 13 ปี</h1>
+          </span>
+          <span className="MiddleContent2">
+          <h1>ในปัจจุบัน</h1>
+          <h1 > การยางไทยอยู่ในจุดอิ่มตัว</h1>
+          </span>
+          <span className="MiddleContent2">
+          <h1>และเข้าสู่ </h1>
+          <h1 style={{ color: '#38991C' }}>Point of Diminishing Return </h1>
+          <h1> แปลว่า</h1>
+          </span>
+          
    
         </div>
       </div>
 
       <div className="container3">
-        <h1>หมายความว่า หากภาครัฐต้องการเพิ่มกำลังผลิตยาง</h1>
-        <h1>แทนที่จะทำให้ได้รายได้เพิ่มขึ้น </h1>
-        <h1>กลับกันจะทำให้ปริมาณยางในตลาดมีมาก </h1>
-        <h1>ทำให้ราคายางตกยิ่งกว่าเดิม</h1>
+        <span className="Content3">
+        <h1>หากภาครัฐต้องการเพิ่มกำลังผลิตยาง</h1>
+        <span className="MiddleContent3">
+        <h1>แทนที่จะทำให้ </h1>
+        <h1 style={{ color: '#38991C' }}>รายได้เพิ่มขึ้น </h1>
+        </span>
+        <span className="MiddleContent3">
+        <h1>จะส่งผลตรงข้าม </h1>
+        <h1 style={{ color: '#e68e13' }} >ทำให้ปริมาณยางในตลาดมีมาก </h1>
+        </span>
+        <span className="MiddleContent3">
+        <h1>ทำให้ราคายาง </h1>
+        <h1 style={{ color: '#ff0000' }} >ตกยิ่งกว่าเดิม</h1>
+        </span>
+        
+
+        </span>
       </div>
 
       <div className="container2Plus">
         <div className="rectangle5">
-
-          <h1>วิธีแก้ปัญหาตรงไปตรงมา คือ ลดกำลังการผลิตยาง  </h1>
+          <span className="MiddleContent3">
+          <h1 style={{ color: '#38991C' }} >วิธีแก้ปัญหาตรงไปตรงมา </h1>
+          <h1 >คือ </h1>
+          <h1 style={{ color: '#38991C' }} >ลดกำลังการผลิตยาง  </h1>
+          </span>
+          <span className="MiddleContent3">
           <h1>คำพูดนี้เหมือนจะง่ายแต่จะมีผลกระทบต่อสวนยางที่ได้ลงทุนไปแล้ว</h1>
-          <h1>คงจะไม่มีใครยอมขาดทุนเว้นแต่จะมีทาง ชดเชยเงินส่วนต่าง </h1>
-   
+          </span>
+          <span className="MiddleContent3">
+          <h1>คงจะไม่มีใครยอมขาดทุนเว้นแต่จะมีทาง </h1>
+          <h1 style={{ color: '#38991C' }} >ชดเชยเงินส่วนต่าง</h1>
+          </span>
+
         </div>
       </div>
 
@@ -119,7 +151,7 @@ function Info() {
         <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
         <h1> แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง</h1>
         <h1>ที่สามารถทำ Carbon Offset ได้ </h1>
-        <h1>โดยจะต้องแรกเปลี่ยนในรูปของ Carbon Credit</h1>
+        <h1>โดยจะต้องแลกเปลี่ยนในรูปของ Carbon Credit</h1>
         <h1>นี้เป็นการยกผลประโยชน์ให้แก่ประเทศที่มี Carbon Sink Potential</h1>
       </div>
 

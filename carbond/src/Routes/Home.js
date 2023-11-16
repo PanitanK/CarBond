@@ -10,10 +10,10 @@ import RequestIcon from './image/svg/Request.png';
 import ResearchIcon from './image/svg/Research.png';
 import PartnersIcon from './image/svg/Partners.png';
 import MarketIcon from './image/svg/Market.png';
-
+import UserIcon from './image/svg/person.png';
 
 import { Link } from "react-router-dom";
-import LOCKER from './image/svg/locker.svg';
+//import LOCKER from './image/svg/locker.svg';
 
 function Home() {
   //var fetchcount = 0;
@@ -28,6 +28,9 @@ function Home() {
   //const [showDropdown, setShowDropdown] = useState(false);
 
   const [MaximumCredit , setMaximumCredit] = useState(0);
+
+  console.log(plotDocuments)
+  console.log(MaximumCredit)
   const handleNavigation = (path) => {
     // Use the navigate function to navigate to the specified path
     navigate(path);
@@ -113,7 +116,7 @@ function Home() {
           </Link>
         </div>
         <Link to="/login" className="green-box">
-          <img src={LOCKER} alt="UGBN" className="Locker" />
+          <img src={UserIcon} alt="UGBN" className="Locker" />
           <h1 className="green-box-text">Wei Shen</h1>
         </Link>
 
