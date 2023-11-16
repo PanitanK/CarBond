@@ -17,6 +17,11 @@ function App() {
     navigate('/info');
   };
 
+  const handleClick2 = () => {
+    // Navigate to the "/info" route
+    navigate('/Home' , { state: { userUID: "T8qpBOb5mkTsQUjagbq3UmwePMq2"} });
+  };
+
   return (
     <div className="App">
       <div className="static-bar">
@@ -50,7 +55,7 @@ function App() {
         <th className="table-header">
           <div className="Component1">
             <h1>คุณเป็นเกษตรกรใช่ไหม ? </h1>
-            <div className="rectangle2">
+            <div className="rectangle2" onClick={handleClick2}>
               <h2>คลิกที่นี่เลย ! </h2>
             </div>
           </div>

@@ -16,6 +16,33 @@ function Info() {
     navigate('/Home' , { state: { userUID: "T8qpBOb5mkTsQUjagbq3UmwePMq2"} });
   };
 
+  const RubberRevDataset = {
+    labels: [
+      '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2016',
+      '2017', '2018', '2019', '2020', '2021', '2022'
+    ],
+    datasets: [
+      {
+        label: 'Expense',
+        data: [3706, 4330, 4908, 4672, 4757, 6772, 6294, 6349, 9121, 10188, 11411, 13542, 10435, 20329, 11108],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2,
+        fill: false,
+      },
+      {
+        label: 'Income',
+        data: [5106, 5098, 4696, 5883, 14747, 14855, 10347, 5694, 8380, 10168, 12095, 13498, 11709, 17523, 12477],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        fill: false,
+      },
+    ],
+  };
+  
+
+  console.log(RubberRevDataset)
+
+
   return (
     <div className="App">
       <div className="static-bar">
@@ -54,7 +81,7 @@ function Info() {
         </div>
       </div>
 
-      <div className="container3">
+      <div className="container3Chart ">
         <h1>ประเทศไทยเป็นทั้งผู้ผลิตและส่งออกยางอันดับหนึ่งของโลกตั้งแต่ปี 1991</h1>
         <div className="chart-container">
           <LineChart />

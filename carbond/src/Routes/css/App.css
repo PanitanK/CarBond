@@ -213,7 +213,7 @@
 }
 
 .container2 {
-  margin-top: 6%;
+  margin-top: 8%;
   display: flex;
   justify-content:left;
   align-items:baseline;
@@ -249,18 +249,30 @@
   padding-bottom: 0px;
 }
 
+.container3Chart {
+
+  justify-content:baseline;
+  align-items:center;
+  height: 80vh; /* 10% of the viewport height */
+  background-color: #ffffff; /* Green color, change as needed */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: top;
+  padding-bottom: 0px;
+}
 .container3 h1{
   color: black;
   font-size: 32px;
 }
 
 .chart-container {
-  /* Adjust as needed */
-  width: 80%;
-  height: 300px;
-
-  border: 2px solid black;
+  width: 700px;
+  height: 50px;
+  margin: 0 auto; /* Center the chart horizontally */
 }
+
 
 .container2Plus {
   margin-top: 6%;
