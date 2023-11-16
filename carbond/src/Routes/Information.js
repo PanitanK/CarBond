@@ -89,7 +89,7 @@ function Info() {
       </div>
 
       <div className="container2XE">
-        <div className="rectangle5">
+        <div className="rectangle5" style={{ lineHeight: '1.6' }}>
           <span className="MiddleContent2">
           <h1>เราผ่านจุด</h1>
           <h1 style={{ color: '#38991C' }}> สูงสุดของเราในปี 2010 </h1>
@@ -109,7 +109,7 @@ function Info() {
         </div>
       </div>
 
-      <div className="container3">
+      <div className="container3" style={{ lineHeight: '1.2' }}>
         <span className="Content3">
         <h1>หากภาครัฐต้องการเพิ่มกำลังผลิตยาง</h1>
         <span className="MiddleContent3">
@@ -130,8 +130,8 @@ function Info() {
       </div>
 
       <div className="container2Plus">
-        <div className="rectangle5">
-          <span className="MiddleContent3">
+        <div className="rectangle5" style={{ lineHeight: '0.6' }}>
+          <span className="MiddleContent3" style={{paddingTop:'7.5vh'}}>
           <h1 style={{ color: '#38991C' }} >วิธีแก้ปัญหาตรงไปตรงมา </h1>
           <h1 >คือ </h1>
           <h1 style={{ color: '#38991C' }} >ลดกำลังการผลิตยาง  </h1>
@@ -147,36 +147,97 @@ function Info() {
         </div>
       </div>
 
-      <div className="container3">
-        <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
-        <h1> แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง</h1>
-        <h1>ที่สามารถทำ Carbon Offset ได้ </h1>
-        <h1>โดยจะต้องแลกเปลี่ยนในรูปของ Carbon Credit</h1>
+      <div className="container3" style={{ lineHeight: '1.5' }}>
+        <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2 <br></br>
+         แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง<br></br>
+        ที่สามารถทำ Carbon Offset ได้ 
+        โดยจะต้องแลกเปลี่ยนในรูปของ </h1>
+        <h1 style={{ color: '#38991C' }} >" Carbon Credit "</h1>
         <h1>นี้เป็นการยกผลประโยชน์ให้แก่ประเทศที่มี Carbon Sink Potential</h1>
       </div>
 
       <div className="container2Plus2">
         <div className="rectangle5">
 
-          <h1>Carbon Sink Potential Map</h1>
+          <h1 style={{ color: '#38991C' }} >Carbon Sink Potential Map</h1>
           <img src={CSink} alt="UGBN" className="CSink" />
 
         <div className="Southern">
           <img src={RainMap} alt="UGBN" className="RainMap" />
+        <div className="SouthTextBox">
 
-          <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
-        <h1> แก่กิจการที่มี Carbon Emission ให้ลดการปลดปล่อย หากทำไม่ได้ให้หาแหล่ง</h1>
-        <h1>ที่สามารถทำ Carbon Offset ได้ </h1>
-        <h1>โดยจะต้องแรกเปลี่ยนในรูปของ Carbon Credit</h1>
-        <h1>นี้เป็นการยกผลประโยชน์ให้แก่ประเทศที่มี Carbon Sink Potential</h1>
+
+        
+        <h1 style={{ color: '#38991C' }}  >ในการกักเก็บ CO2 พืชจำเป็นจะต้องใช้ </h1>
+        <span className="MiddleContent3">
+        <h1>CO2 + </h1>
+        <h1 style={{ color: '#00BFFC' }}> H2O </h1>
+        <h1>+ </h1>
+        <h1 style={{ color: '#FEBA0D' }}>Sunlight </h1>
+        <h1> → Organic Compound</h1>
+        </span>
+        <div style={{ lineHeight: '0.2', marginTop:'5vh'}} >
+        <span className="MiddleContent3">
+          <h1>ภาคใต้มีพื้นที่คิดที่คิดเป็น</h1>
+          <h1 style={{ color: '#00BFFC' }} > 14% </h1>
+          <h1>ของพื้นที่ประเทศไทย</h1>
+        </span>
+
+        <span className="MiddleContent3">
+   
+          <h1>แต่รองรับ </h1>
+          <h1 style={{ color: '#00BFFC' }} >ปริมาณน้ำฝนเกิน 50 % </h1>
+          <h1>ของทั้งประเทศ</h1>
+        </span>
         </div>
+
+        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+   
+          <h1>และมี </h1>
+          <h1 style={{ color: '#FEBA0D' }} >แสงแดด </h1>
+          <h1>เฉลี่ยทั้งปี </h1>
+      
+          <h1 style={{ color: '#FEBA0D' }} >11 ชม 50 นาที </h1>
+          <h1>ในหนึ่งวัน </h1>
+        </span>
+
+        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+   
+          <h1>แล้วภาคใต้มีอะไรมากที่สุดหล่ะ? </h1>
+          <h1 style={{ color: '#38991C' }}  >พืชเศรษฐกิจ </h1>
+          <h1>อะไรมากที่สุดหล่ะ?</h1>
+  
+        </span>
+        </div>
+
+        
+        </div>
+
       </div>
       </div>
 
       <div className="container3X">
       <img src={RubberTree} alt="UGBN" className="RubberTree" />
-        <h1>ในปัจจุบัน สหภาพยุโรปได้ออกมาตรการควบคุมการปลดปล่อย CO2</h1>
+
+       
+      <div>
+        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+   
+        <h1  style={{ color: '#38991C' ,fontStyle:'italic'}}   >Hevea brasiliensis </h1>
+          <h1>หรือ ต้นยางพารา</h1>
         
+  
+        </span>
+
+        <div style={{ lineHeight: '0', marginTop:'5vh'}}>
+        <span className="MiddleContent3" style={{ lineHeight: '0.5', marginTop:'5vh'}}>
+          <h1>  ในประเทศไทยปลูกต้นยางอยู่ </h1>
+          <h1 style={{ color: '#38991C' }}  >   22 ล้านไร่ </h1>
+          
+        </span>
+        <h3 >( สำนักงานปลัดกระทรวงเกษตรและสหกรณ์ 2023 )</h3>
+        </div>
+      </div>
       </div>
 
       <div className="container2Plus">
