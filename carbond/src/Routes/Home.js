@@ -23,8 +23,8 @@ function Home() {
   //const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [HasFetched, setFetch] = useState(false);
-  const [mode, setMode] = useState("Home");
-
+  const [mode, setMode] = useState("/option1");
+  const [plotDocuments, setplotDocuments] = useState([])
 
 
 
@@ -32,10 +32,25 @@ function Home() {
   const handleMode = (USERMode) => {
     setMode(USERMode);
   };
+  const fetchPlotDocuments = async (userUID) => {
+    const dataCollectionRef = collection(db, 'USERS', userUID, 'DataCollection');
   
+    try {
+      const querySnapshot = await getDocs(dataCollectionRef);
+      const plotDocuments = querySnapshot.docs
+        .filter((doc) => doc.id.startsWith('PlotNO_'))
+        .map((doc) => doc.data());
+        
+      return plotDocuments;
+    } catch (error) {
+      console.error('Error fetching plot documents:', error);
+      return [];
+    }
+  };
   
  /* FETCH DATA UPON START*/
   useEffect(() => {
+   
     const fetchData = async () => {
       try {
         const userDocRef = doc(userCollectionRef, userUID);
@@ -51,6 +66,9 @@ function Home() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+
+      const plotDocuments = await fetchPlotDocuments(userUID);
+      setplotDocuments(plotDocuments)
     };
 
 
@@ -74,8 +92,12 @@ function Home() {
   else if (!userData) {
     return <div className="App-header">Loading...</div>;
   } 
+
+  
   
   else {
+  console.log(userData)
+  console.log(plotDocuments)
     return (
        /* STATIC BAR */
        <div className="App">
@@ -132,7 +154,7 @@ function Home() {
         </div>
   
         <div className="ContentBoard">
-          <ContentBoard mode={mode} />
+          <ContentBoard mode={mode} userData={userData} plotDocuments={plotDocuments} />
           
         </div>
       </div>

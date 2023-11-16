@@ -52,10 +52,10 @@ function Info() {
             <img className="title-image" src={Title} alt="Title" />
           </Link>
         </div>
-        <Link to="/login" className="green-box">
+        <div className="green-box">
           <img src={LOCKER} alt="UGBN" className="Locker" />
           <h1 className="green-box-text">UGBN MEMBER</h1>
-        </Link>
+        </div>
 
       </div>
 
