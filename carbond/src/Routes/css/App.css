@@ -296,7 +296,7 @@
 .container2Plus2 {
   margin-top: 6%;
   display: flex;
-  justify-content:left;
+  justify-content:center;
   align-items:baseline;
   height: 185vh; 
   background-color: #02122B; 
@@ -453,4 +453,64 @@
 }
 .ParaText {
   padding-left: 10vh;
+}
+
+.container2Plus3 {
+  margin-top: 0;
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 105vh; /* 10% of the viewport height */
+  background-color: #02122B; /* Green color, change as needed */
+}
+
+
+.Rev{
+  width: 200vh;
+
+}
+
+.container2Plus4 {
+  display: flex;
+  margin-top: 0%;
+  flex-direction: column; /* Stack children vertically */
+  justify-content:center;
+  align-items:center;
+  height: 80vh; /* 10% of the viewport height */
+  background-color: #ffffff; /* Green color, change as needed */
+}
+
+.container2Plus4 h2{
+  color: black;
+  
+  text-align: center;
+  font-size: 30px;
+}
+
+.rectangle2x {
+  font-size: 20px;
+  background-color: #38991C;
+  color: #fff;
+
+  cursor: pointer;
+  margin-top: 20px;
+  width: 20%; /* Adjust the margin as needed */
+}
+
+.container2Plus4 h1{
+  color: #38991C;
+  text-align: center;
+  font-size: 30px;
+}
+
+.rectangle5x {
+  width: 80vw; /* 100% of the viewport width */
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  display: inline-block; /* Make it an inline-block element */
+  /* Add any other styles as needed */
+  /*border: 2px solid rgb(255, 255, 255);*/
+
 }

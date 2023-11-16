@@ -4,6 +4,7 @@ import LOCKER from './image/svg/locker.svg';
 import CSink from './image/Data/CSink.png';
 import RainMap from './image/Data/RainMap.png';
 import RubberTree from './image/Data/RubberTree.png';
+import Rev from './image/Data/Rev.png';
 import './css/App.css';
 import MK2 from './image/logo/MK2.png';
 import LineChart from './LineChart';
@@ -263,29 +264,32 @@ function Info() {
         
       </div>
     </div>
+    
 
-      <div className="container2Plus">
+
+      <div className="container2Plus3">
         <div className="rectangle5">
-
-          <h1>ผลตอบแทนจาก Carbon Credit ต่อไร่</h1>
-
+        <img src={Rev} alt="UGBN" className="Rev" />
+          
      
    
         </div>
       </div>
 
-      <div className="container2Plus">
-        <div className="rectangle5">
-
-          <h1>เรายังสามารถทำได้ดีกว่านี้ นำ Carbon Credit ไทยเข้าสู่ตลาดสากล</h1>
-          <h1>และพัฒนาความสามารถในการดูดซับ CO2 ของสวนยางกัน</h1>
+      <div className="container2Plus4">
+        <div className="rectangle5x">
+          <h2>เรายังสามารถทำได้ดีกว่านี้ นำ Carbon Credit ไทยเข้าสู่ตลาดสากล</h2>
+          <h2>และพัฒนาความสามารถในการดูดซับ CO2 ของสวนยางกัน</h2>
           <h1>เรามาตามหาโอกาสใหม่ๆ ด้วยกันไหม </h1>
-          <div className="rectangle2" onClick={handleClick} >
-            <h1>คลิกที่นี่เลย !</h1>
-       
-            </div>
-   
+          
         </div>
+       
+        <div className="rectangle2x" onClick={handleClick} >
+            <h3>คลิกที่นี่เลย !</h3>
+        </div>
+        
+
+        
       </div>
 
 
