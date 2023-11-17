@@ -499,7 +499,7 @@
 
 .Dashboard {
   margin-top: 0vh;
-  border: 2px solid rgb(165, 20, 20);
+  border: 2px solid rgba(255, 255, 255, 0);
   display: flex;
   overflow-x: hidden;
 }
@@ -521,7 +521,7 @@
   height: 80vh;
   width: 72vw;
   position: fixed;
-  background-color: #54b82c;
+  background-color: #ffffff;
 
   @media screen and (min-width: 1024px) {
     margin-top: 7vh;

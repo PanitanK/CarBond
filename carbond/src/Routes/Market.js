@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Market = () => {
-  return <div>UEUEUEU</div>;
+  return (
+    <div className='BigBox2'>
+      Incoming
+    </div>
+  );
 };
 
 export default Market;

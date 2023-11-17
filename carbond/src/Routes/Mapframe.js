@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-const MapFrame = () => {
+const MapFrame = ({onMapClick}) => {
   const [polygonCoordinates, setPolygonCoordinates] = useState([]);
+  const [ Clicked , setClicked] = useState(false)
+
 
   useEffect(() => {
     window.addEventListener("message", receiveMessage);
@@ -15,8 +17,23 @@ const MapFrame = () => {
     if (event.data.type === "polygonCoordinates") {
       const receivedCoordinates = event.data.coordinates;
       setPolygonCoordinates(receivedCoordinates);
+      console.log("I've get")
+      console.log(receivedCoordinates)
     }
+
+    else if (event.data.type === "applyButtonClicked") {
+
+
+      setClicked(true)
+      console.log("This is click status")
+      console.log(Clicked)
+      onMapClick(Clicked,polygonCoordinates);
+    }
+    
+   
   };
+
+
 
   const calculatePolygonArea = (coords) => {
     if (coords.length < 3) return 0;
@@ -36,66 +53,24 @@ const MapFrame = () => {
     return sqKmArea;
   };
 
+
   return (
     <div className="MapBoxContainerForDraw">
-      <h1 style={{color : "black"}} class="primary-header1" >Check your plot production</h1>
+     
       <iframe
         src="/mapdrawing.html"
-        width="80%"
-        height="400px"
+        width="100%"
+        height="280vh"
         frameBorder="0"
         title="Google Map"
       ></iframe>
 
-      <div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <h2 class="primary-header7">Polygon Coordinates</h2>
-          <div style={{ maxHeight: '100px', overflowY: 'auto' }}>
-          <table style={{ color: 'white', backgroundColor: 'transparent', width: '100%' }}>
-            <thead>
-              <tr>
-                <th class="primary-header6">No.</th>
-                <th class="primary-header6">Latitude</th>
-                <th class="primary-header6">Longitude</th>
-              </tr>
-            </thead>
-            <tbody>
-              {polygonCoordinates.map((coord, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{coord.lat}</td>
-                  <td>{coord.lng}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <h2 class="primary-header7">Polygon Area</h2>
-          
-          <p style={{ textAlign: 'center', margin: 0 }}>
-            <span style={{ display: 'block', marginTop: 'auto', marginBottom: 'auto' }} class="primary-header6">
-              {calculatePolygonArea(polygonCoordinates).toFixed(2)} sq km
-            </span>
-          </p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <h2 class="primary-header7">Estimated yearly rubber production</h2>
-          <p class="primary-header6">{calculatePolygonArea(polygonCoordinates).toFixed(2)} kg</p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <h2 class="primary-header7">Maximum Carbon Credit / Year</h2>
-          <p class="primary-header6">{calculatePolygonArea(polygonCoordinates).toFixed(2)} Credits</p>
-        </div>
-      </div>
 
 
               
-            </div>
-          </div>
+    </div>
+    
   );
 };
 

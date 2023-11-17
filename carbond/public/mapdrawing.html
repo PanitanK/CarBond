@@ -50,6 +50,7 @@
     <label for="longitude">Longitude:</label>
     <input type="text" id="longitude" placeholder="Enter longitude">
     <button onclick="navigateToCoordinates()">Navigate</button>
+    <button onclick="Applyclicked()">Apply</button>
     <div class="color-picker">
       <label for="color">Polygon Color:</label>
       <input type="color" id="color" value="#FF0000">
@@ -62,8 +63,10 @@
   
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 8.5, lng: 100 },
-        zoom: 6,
+        center: { lat: 8.54222709382786, lng: 99.9538310345991 },
+        zoom: 17,
+        mapTypeId: google.maps.MapTypeId.SATELLITE, // Set the map type to SATELLITE
+        labels: false, // Show labels
       });
   
       drawingManager = new google.maps.drawing.DrawingManager({
@@ -132,6 +135,12 @@
       }
     }
 
+    function Applyclicked() {
+      console.log("Apply CLICKED")
+      window.parent.postMessage({ type: "applyButtonClicked"});
+    }
+
+
     function updateCenterLocationInput() {
       const center = map.getCenter();
       const latitudeInput = document.getElementById("latitude");
@@ -141,6 +150,6 @@
       longitudeInput.value = center.lng();
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS-9FhEUM8F00Bhhb6RwaI3DmEX4dMApU&libraries=drawing&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk&libraries=drawing&callback=initMap" async defer></script>
 </body>
 </html>
