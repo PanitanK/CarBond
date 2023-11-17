@@ -1,12 +1,12 @@
 import React from 'react';
 
-import HomeMode from './HomeMode';
+import HomeMode from './HomeComp';
 import ReqMode from './Req'
 import ResearchMode from './Research'
 import PartnerMode from './Partners'
 import MarketMode from './Market'
 
-function ContentBoard({ mode ,userData}) {
+function ContentBoard({ mode ,userData,plotDocuments}) {
   switch (mode) {
     case '/option1':
       return <HomeMode userData={userData}/>;

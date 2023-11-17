@@ -237,7 +237,7 @@ function Info() {
           <h3 >( สำนักงานปลัดกระทรวงเกษตรและสหกรณ์ 2023 )</h3>
         </div>
 
-
+      <div className="TableBox">
         <div className="Table">
           <div className="TableRow">
             <div className="TableColumn">
@@ -249,15 +249,16 @@ function Info() {
               </div>
             </div>
 
-            <div className="TableColumn">
+            <div className="TableColumn2">
               {/* Second FigureBox */}
-              <div className="FigureBox">
+              <div className="FigureBox2">
                 <h1 className="FigureHeader" style={{ color: "black" }}>ดูดซับ CO2 จากบรรยากาศ</h1>
                 <h1 className="FigureValue" style={{ fontSize: "80px", lineHeight: '0' }}>28.6</h1>
                 <h1 className="FigureDescription" style={{ color: "black", fontSize: "30px" }}>ล้านตัน/ปี</h1>
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         </div>
