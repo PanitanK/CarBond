@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Marker</title>
+    <!-- The callback parameter is required, so we use console.debug as a noop -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <style>
+      gmp-map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Use JavaScript to extract query parameters and set the map center -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const lat = urlParams.get('lat');
+      const lng = urlParams.get('lng');
+
+      // Your existing map initialization code here
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: parseFloat(lat), lng: parseFloat(lng) },
+        zoom: 14,
+        mapId: 'DEMO_MAP_ID',
+      });
+    </script>
+
+    <!-- Use a div with an id to render the map -->
+    <div id="map" style="height: 100%;"></div>
+  </body>
+</html>

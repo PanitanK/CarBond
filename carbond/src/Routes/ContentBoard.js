@@ -13,13 +13,13 @@ function ContentBoard({ mode ,userData,plotDocuments}) {
     case '/option1':
       return <HomeMode DataPackage={{userData , plotDocuments}} />;
     case '/option2':
-      return <ReqMode userData={userData}/>;
+      return <ReqMode DataPackage={{userData , plotDocuments}}/>;
     case '/option3':
-      return <ResearchMode userData={userData}/>;
+      return <ResearchMode  DataPackage={{userData , plotDocuments}}/>;
     case '/option4':
-      return <PartnerMode userData={userData}/>;
+      return <PartnerMode DataPackage={{userData , plotDocuments}}/>;
     case '/option5':
-      return <MarketMode userData={userData}/>;
+      return <MarketMode DataPackage={{userData , plotDocuments}}/>;
 
 
     default:
