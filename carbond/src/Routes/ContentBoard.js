@@ -7,9 +7,11 @@ import PartnerMode from './Partners'
 import MarketMode from './Market'
 
 function ContentBoard({ mode ,userData,plotDocuments}) {
+
+  
   switch (mode) {
     case '/option1':
-      return <HomeMode userData={userData}/>;
+      return <HomeMode DataPackage={{userData , plotDocuments}} />;
     case '/option2':
       return <ReqMode userData={userData}/>;
     case '/option3':

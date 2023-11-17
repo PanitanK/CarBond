@@ -96,8 +96,7 @@ function Home() {
   
   
   else {
-  console.log(userData)
-  console.log(plotDocuments)
+
     return (
        /* STATIC BAR */
        <div className="App">
@@ -155,7 +154,7 @@ function Home() {
   
         <div className="ContentBoard">
         
-          <ContentBoard mode = {mode}/>
+          <ContentBoard mode = {mode} userData={userData} plotDocuments={plotDocuments}/>
         </div>
       </div>
     );
