@@ -8,6 +8,7 @@ import Rev from './image/Data/Rev.png';
 import './css/App.css';
 import MK2 from './image/logo/MK2.png';
 import LineChart from './LineChart';
+import LineChart2 from './LineChart2';
 import { useNavigate } from 'react-router-dom';
 function Info() {
 
@@ -125,7 +126,12 @@ function Info() {
         <h1>ทำให้ราคายาง </h1>
         <h1 style={{ color: '#ff0000' }} >ตกยิ่งกว่าเดิม</h1>
         </span>
-        
+        <div className="container3Chart ">
+      
+        <div className="chart-container">
+          <LineChart2/>
+        </div>
+      </div>
 
         </span>
       </div>
@@ -252,7 +258,7 @@ function Info() {
             <div className="TableColumn2">
               {/* Second FigureBox */}
               <div className="FigureBox2">
-                <h1 className="FigureHeader" style={{ color: "black" }}>ดูดซับ CO2 จากบรรยากาศ</h1>
+                <h1 className="FigureHeader" style={{ color: "black" }}>CO2 Absorption</h1>
                 <h1 className="FigureValue" style={{ fontSize: "80px", lineHeight: '0' }}>28.6</h1>
                 <h1 className="FigureDescription" style={{ color: "black", fontSize: "30px" }}>ล้านตัน/ปี</h1>
               </div>

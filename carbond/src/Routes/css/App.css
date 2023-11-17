@@ -442,12 +442,12 @@
 
   @media screen and (min-width: 1024px) {
     height: 80vh; /* 50% of the viewport height for iPads with a maximum width of 1024 pixels */
-    margin-left: 25vh;
+
   }
 
   @media screen and (max-height: 600px) {
     height: 100vh; /* 100% of the viewport height for laptops with a minimum width of 1366 pixels */
-    margin-left: 10vh;
+ 
   }
 
   
@@ -583,6 +583,8 @@
   
 }
 .TableBox{
+  text-align: center;
+  align-items: center;
   @media screen and (min-width: 1024px) {
     transform: scale(0.8); /* Adjust the scaling factor as needed */
     margin-left: -13.5vw;
@@ -590,7 +592,7 @@
 
   @media screen and (max-height: 600px) {
     transform: scale(1); /* Adjust the scaling factor as needed */
-    margin-left: -00vw;
+    margin-left: -0vw;
   }
 
 }
