@@ -455,15 +455,26 @@
 }
 
 .sidebar {
-  margin-top: 40px;
-  width: 250px;
-  height: 85.5vh;
+  margin-top: 2.5vw;
+  width: 20vw;
+  height: 100vh;
   background-color: #02122B;
   color: #fff;
-  margin-left: -5px;
+  margin-left: -1vw;
   display: flex;
   flex-direction: column;
   position: fixed;
+  padding-top: 10vh;
+  @media screen and (min-width: 1024px) {
+    margin-top: 0vw;
+    padding-top: 5vh;
+  }
+  
+
+  @media screen and (max-height: 600px) {
+    margin-top: 0vw;
+    padding-top: 10vh;
+  }
   
 }
 
@@ -490,6 +501,7 @@
   margin-top: 0vh;
   border: 2px solid rgb(165, 20, 20);
   display: flex;
+  overflow-x: hidden;
 }
 
 .IconClass{
@@ -503,12 +515,22 @@
   
 }
 .ContentBoard{
-  margin-left: 20%;
-  margin-top: 4%;
-  height: 80%;
-  width: 80%;
+  
+ 
+  height: 80vh;
+  width: 72vw;
   position: fixed;
-  background-color: #8f948d;
+  background-color: #54b82c;
+
+  @media screen and (min-width: 1024px) {
+    margin-top: 7vh;
+    margin-left: 20vw;
+  }
+
+  @media screen and (max-height: 600px) {
+   margin-top: 10vh;
+   margin-left: 22vw;
+  }
 }
 
 .Content3 {

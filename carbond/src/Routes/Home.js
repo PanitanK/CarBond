@@ -26,7 +26,7 @@ function Home() {
   const [mode, setMode] = useState("/option1");
   const [plotDocuments, setplotDocuments] = useState([])
 
-
+  //  <ContentBoard mode={mode} userData={userData} plotDocuments={plotDocuments} />
 
   
   const handleMode = (USERMode) => {
@@ -154,8 +154,8 @@ function Home() {
         </div>
   
         <div className="ContentBoard">
-          <ContentBoard mode={mode} userData={userData} plotDocuments={plotDocuments} />
-          
+        
+          <ContentBoard mode = {mode}/>
         </div>
       </div>
     );
