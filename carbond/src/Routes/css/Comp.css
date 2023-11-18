@@ -27,7 +27,7 @@
   .Topbox {
     margin: 1%;
     width: 97%;
-    height: 50vh;
+    height: 55vh;
     border: 2px solid rgb(192, 40, 40);
   }
   
@@ -80,4 +80,21 @@
     display: flex;
     flex-direction: column; /* Stack items vertically */
     margin-left: 4vw;
+  }
+
+  iframe {
+    width: 100%;
+    @media screen and (min-width: 1024px) {
+      height: 36vw;
+    }
+  
+    @media screen and (max-height: 600px) {
+      height: 21.5vw;
+    } 
+
+  }
+
+  .ClickBut {
+    
+    cursor: pointer;
   }

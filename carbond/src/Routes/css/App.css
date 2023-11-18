@@ -393,10 +393,13 @@
 
   @media screen and (min-width: 1024px) {/*  iPads  */
     height: 140vh;
+    padding-left: 2.0vw;
+    
   }
 
   @media screen and (max-height: 600px) {/* laptops */
     height: 200vh;
+    padding-left: 7.0vw;
      
   }
 }
@@ -711,4 +714,16 @@
   /* Add any other styles as needed */
   /*border: 2px solid rgb(255, 255, 255);*/
 
+}
+
+.rectangle5xe {
+  width: 80vw; /* 100% of the viewport width */
+  text-align: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  display: inline-block; /* Make it an inline-block element */
+  /* Add any other styles as needed */
+  /*border: 2px solid rgb(255, 255, 255);*/ 
+  margin-left: 50px;
 }

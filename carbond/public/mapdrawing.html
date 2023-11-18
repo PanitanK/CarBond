@@ -14,7 +14,7 @@
     .input-container {
       padding: 0px; /* Increase the padding as needed */
     
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgb(0, 0, 0);
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -50,10 +50,10 @@
     <label for="longitude">Longitude:</label>
     <input type="text" id="longitude" placeholder="Enter longitude">
     <button onclick="navigateToCoordinates()">Navigate</button>
-    <button onclick="Applyclicked()">Apply</button>
+   
     <div class="color-picker">
-      <label for="color">Polygon Color:</label>
-      <input type="color" id="color" value="#FF0000">
+      <label for="color">Color:</label>
+      <input type="color" id="color" value=#FFFFFF>
     </div>
   </div>
   <script>
@@ -85,7 +85,7 @@
   
       drawingManager.setMap(map);
   
-      let selectedColor = "#FF0000"; // Default color is red
+      let selectedColor = "white"; // Default color is red
   
       const colorPicker = document.getElementById("color");
       colorPicker.addEventListener("change", (event) => {
@@ -97,7 +97,9 @@
           currentPolygon = event.overlay;
           currentPolygon.setOptions({
             fillColor: selectedColor,
-            strokeColor: selectedColor, // Set stroke color when complete
+            strokeColor: selectedColor, 
+            editable: true,
+            draggable: true
           });
   
           const polygonCoordinates = currentPolygon.getPath().getArray().map(coord => ({ lat: coord.lat(), lng: coord.lng() }));

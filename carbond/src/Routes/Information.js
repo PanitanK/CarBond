@@ -53,7 +53,7 @@ function Info() {
             <img className="title-image" src={Title} alt="Title" />
           </Link>
         </div>
-        <div className="green-box">
+        <div className="green-box" onClick={handleClick}>
           <img src={LOCKER} alt="UGBN" className="Locker" />
           <h1 className="green-box-text">UGBN MEMBER</h1>
         </div>
@@ -164,6 +164,7 @@ function Info() {
       </div>
 
       <div className="container2Plus2">
+        <div className="ShiftLeft">
         <div className="rectangle5">
 
           <h1 style={{ color: '#38991C' }} >Carbon Sink Potential Map</h1>
@@ -216,7 +217,7 @@ function Info() {
   
         </span>
         </div>
-
+        </div>
         
         </div>
 
