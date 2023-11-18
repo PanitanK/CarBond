@@ -27,15 +27,15 @@ const HomeMode = (DataPackage) => {
             
             <span>
             <h2>Area </h2>
-            <h2 style={{color:"#FF0000"}} >{Math.floor(Intermediate.PlotData.Area* 625)}</h2>
+            <h2 style={{color:"#38991C"}} >{Math.floor(Intermediate.PlotData.Area* 625)}</h2>
             <h2> Rais</h2>
             <h2 style={{color:"#FF0000"}} >      0/{Math.floor(Intermediate.PlotData.Area* 625* 0.6)}</h2>
             <h2> Bond sold</h2>
             </span>
             <span>
             <h2>Total </h2>
-            <h2 style={{color:"#FF0000"}}>{0*Math.floor(Intermediate.PlotData.Area* 625*0.6*200)}</h2>
-            <h2> THB Raised</h2>
+            <h2 style={{color:"#FF0000"}}>{0*Math.floor(Intermediate.PlotData.Area* 625*0.6*200)} THB </h2>
+            <h2> Raised</h2>
             </span>
             <h2 style={{color:"#EB8E21"}}>Status : Pending</h2>
             

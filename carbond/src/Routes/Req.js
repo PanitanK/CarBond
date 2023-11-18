@@ -46,7 +46,7 @@ const Request = ({onSubmit}) => {
               <div className='Polymap'>
 
               
-          <StaticmapwithPolygon  initialCenter={{ Label: "x" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
+          <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
           </div>
           </div>
             <div className='RightBundle'>

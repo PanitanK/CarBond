@@ -32,6 +32,7 @@ function Home() {
   const handleMode = (USERMode) => {
     setMode(USERMode);
   };
+  
   const fetchPlotDocuments = async (userUID) => {
     const dataCollectionRef = collection(db, 'USERS', userUID, 'DataCollection');
   
