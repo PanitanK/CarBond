@@ -21,15 +21,24 @@ const HomeMode = (DataPackage) => {
         <h1>Active Bond</h1>
         {Intermediate !== null ? (
           // Display content if Intermediate is not null
-          <div className='Subbox1x' >
-             <span>
+          <div className='Subbox1x2' >
+             
             <h1 style={{color:"#38991C"}} >Bond 1</h1>
-            {/* Display the content of Intermediate */}
-            <h1>Area {Math.floor(Intermediate.PlotData.Area* 625)} Rai</h1>
-            <h1>0/ {Math.floor(Intermediate.PlotData.Area* 625* 0.6)} Bond sold</h1>
-            < h1>Total {0*Math.floor(Intermediate.PlotData.Area* 625*0.6*200)} THB Raised</h1>
-            <h1>Status : Pending</h1>
+            
+            <span>
+            <h2>Area </h2>
+            <h2 style={{color:"#FF0000"}} >{Math.floor(Intermediate.PlotData.Area* 625)}</h2>
+            <h2> Rais</h2>
+            <h2 style={{color:"#FF0000"}} >      0/{Math.floor(Intermediate.PlotData.Area* 625* 0.6)}</h2>
+            <h2> Bond sold</h2>
             </span>
+            <span>
+            <h2>Total </h2>
+            <h2 style={{color:"#FF0000"}}>{0*Math.floor(Intermediate.PlotData.Area* 625*0.6*200)}</h2>
+            <h2> THB Raised</h2>
+            </span>
+            <h2 style={{color:"#EB8E21"}}>Status : Pending</h2>
+            
           </div>
         ) : (
           // Display "No bond" if Intermediate is null
