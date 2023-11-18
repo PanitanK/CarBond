@@ -2,7 +2,8 @@ import React, { useState , useEffect } from 'react';
 import MapFrame from './Mapframe';
 import './css/Comp.css';
 import StaticmapwithPolygon from './StaticmapwithPolygon';
-const Request = () => {
+
+const Request = ({onSubmit}) => {
   const [isMapFrameVisible, setIsMapFrameVisible] = useState(true);
   const [jsonData, setJsonData] = useState(null);
 
@@ -16,17 +17,15 @@ const Request = () => {
     
   };
 
-  const SubmitPlot = () => {
+  const SubmitPlot = (Data) => {
+    console.log("Submitting Data ")
+    console.log(Data)
+    onSubmit(Data);
 
   }
 
   useEffect(()=> {
-    /*console.log("Use effect JSON")
-    console.log("JSON0");
-    console.log(jsonData.PlotData.Area)
-    console.log(jsonData.PlotData.PlotCenter[0])
-    console.log(jsonData.PlotData.PlotCenter[1])*/
-    console.log(jsonData)
+
     
   })
  
@@ -72,12 +71,12 @@ const Request = () => {
               <span>
               <h1 style={{color:"#38991C"}} >Estimate return</h1>
               <p>Carbon Credit Cap {Math.floor(jsonData.PlotData.Area * 625 * 0.6)} Credits / year</p>
-              <p>Project Value in 1 year  {Math.floor(jsonData.PlotData.Area * 625 * 0.6) * 300} THB </p>
+              <p>Project Value in 1 year  {Math.floor(jsonData.PlotData.Area * 625 * 0.6) * 200} THB </p>
               </span>
             </div>
           </div>
           </div>
-          <button className="ClickBut" onClick={() => SubmitPlot()}>Apply</button>
+          <button className="ClickBut" onClick={() => SubmitPlot(jsonData)}>Apply</button>
           <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
           </>
         )}

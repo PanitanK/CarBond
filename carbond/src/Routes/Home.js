@@ -131,7 +131,7 @@ function Home() {
             </div>
             <div
               className={`sidebar-option ${mode === '/option4' ? 'active' : ''}`}
-              onClick={() => handleMode('/option4')}
+          
             >
               <img src={PartnersIcon} alt="UGBN" className="IconClass" />
               <span>Partners</span>
@@ -148,7 +148,7 @@ function Home() {
               onClick={() => handleMode('/option5')}
             >
               <img src={MarketIcon} alt="UGBN" className="IconClass" />
-              <span>Market</span>
+              <span>Pricing</span>
             </div>
           </div>
         </div>

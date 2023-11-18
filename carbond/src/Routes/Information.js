@@ -57,7 +57,6 @@ function Info() {
           <img src={LOCKER} alt="UGBN" className="Locker" />
           <h1 className="green-box-text">UGBN MEMBER</h1>
         </div>
-
       </div>
 
       <div className="container2">
