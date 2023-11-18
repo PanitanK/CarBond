@@ -1,6 +1,7 @@
 import React from 'react';
 import StaticMapComponent from './StaticMapComponent';
 import './css/Comp.css'
+import StaticmapwithPolygon from './StaticmapwithPolygon';
 const HomeMode = (DataPackage) => {
 // API KEY = AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk
   const userData = DataPackage.DataPackage.userData
@@ -13,10 +14,20 @@ const HomeMode = (DataPackage) => {
 
   return (
     <div className='BigBox'>
-      <div className='Mapbox'>
-          <StaticMapComponent initialCenter={{ lat: userData[0].Latitude, lng: userData[0].Longitude,PlotDoc:plotDocuments }} />  
+      {Intermediate == null ? (<div className='Mapbox'>
+      <StaticMapComponent initialCenter={{ lat: userData[0].Latitude, lng: userData[0].Longitude,PlotDoc:plotDocuments }} />  
+      </div>) : (
+       
+        <div className='Mapbox'>
+        <StaticmapwithPolygon initialCenter={{ Label: "1" ,lat: Intermediate.PlotData.PlotCenter[0], lng: Intermediate.PlotData.PlotCenter[1],Plotpolygon:Intermediate.polygonCoordinates }} />  
         
-      </div>
+        </div>
+      ) }
+      {/*<div className='Polymap'>
+
+              
+          <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
+  </div> */}
       <div className='BondBox'>
         <h1>Active Bond</h1>
         {Intermediate !== null ? (
