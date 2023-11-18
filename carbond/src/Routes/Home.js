@@ -121,13 +121,7 @@ function Home() {
               <img src={HomeIcon} alt="UGBN" className="IconClass" />
               <span>Home</span>
             </div>
-            <div
-              className={`sidebar-option ${mode === '/option2' ? 'active' : ''}`}
-              onClick={() => handleMode('/option2')}
-            >
-              <img src={RequestIcon} alt="UGBN" className="IconClass" />
-              <span>Request</span>
-            </div>
+            
             <div
               className={`sidebar-option ${mode === '/option3' ? 'active' : ''}`}
               onClick={() => handleMode('/option3')}
@@ -141,6 +135,13 @@ function Home() {
             >
               <img src={PartnersIcon} alt="UGBN" className="IconClass" />
               <span>Partners</span>
+            </div>
+            <div
+              className={`sidebar-option ${mode === '/option2' ? 'active' : ''}`}
+              onClick={() => handleMode('/option2')}
+            >
+              <img src={RequestIcon} alt="UGBN" className="IconClass" />
+              <span>Request</span>
             </div>
             <div
               className={`sidebar-option ${mode === '/option5' ? 'active' : ''}`}

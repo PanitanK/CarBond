@@ -1,32 +1,28 @@
-// MapFrame.jsx
-import React, { useEffect, useState } from "react";
-import './css/Comp.css';
+import React, { useEffect, useState, useCallback } from "react";
+import "./css/Comp.css";
 
 const MapFrame = ({ onMapClick }) => {
   const [polygonCoordinates, setPolygonCoordinates] = useState([]);
   const [PlotData, setPlotData] = useState(null);
-  const getcenter = ((Coordinates)=> {
 
-    var centerlat = 0
-    var centerlng = 0 
-    var CDL = Coordinates.length
-    for (let i = 0; i < CDL ; i++) {
-
-      centerlat = centerlat + Coordinates[i].lat
-      centerlng = centerlng + Coordinates[i].lng
+  const getcenter = useCallback((Coordinates) => {
+    var centerlat = 0;
+    var centerlng = 0;
+    var CDL = Coordinates.length;
+    for (let i = 0; i < CDL; i++) {
+      centerlat = centerlat + Coordinates[i].lat;
+      centerlng = centerlng + Coordinates[i].lng;
     }
-    
 
-    centerlat = centerlat/CDL
-    centerlng = centerlng/CDL 
+    centerlat = centerlat / CDL;
+    centerlng = centerlng / CDL;
 
-    return [centerlat,centerlng]
+    return [centerlat, centerlng];
+  }, []);
 
-  })
-
-  const calculatePolygonArea = (coords) => {
-    console.log("This is what we received ") 
-    console.log(coords)
+  const calculatePolygonArea = useCallback((coords) => {
+    console.log("This is what we received ");
+    console.log(coords);
     console.log(coords.length);
 
     if (coords.length < 3) return 0;
@@ -42,9 +38,23 @@ const MapFrame = ({ onMapClick }) => {
 
     // Conversion factor: 1 sq degree = 111.32 sq km (approximately)
     const sqKmArea = (Math.abs(area) / 2) * 111.32 * 111.32;
-    
+
     return sqKmArea;
-  }
+  }, []);
+
+  const receiveMessage = useCallback(
+    (event) => {
+      if (event.data.type === "polygonCoordinates") {
+        setPolygonCoordinates(event.data.coordinates);
+        const collection = {
+          PlotCenter: getcenter(event.data.coordinates),
+          Area: calculatePolygonArea(event.data.coordinates),
+        };
+        setPlotData(collection);
+      }
+    },
+    [getcenter, calculatePolygonArea]
+  );
 
   useEffect(() => {
     window.addEventListener("message", receiveMessage);
@@ -52,37 +62,22 @@ const MapFrame = ({ onMapClick }) => {
     return () => {
       window.removeEventListener("message", receiveMessage);
     };
-  }, []);
+  }, [receiveMessage]);
 
-  const receiveMessage = (event) => {
-    if (event.data.type === "polygonCoordinates") {
-      setPolygonCoordinates(event.data.coordinates);
-      const collection ={
-        PlotCenter: getcenter(event.data.coordinates),
-        Area: calculatePolygonArea(event.data.coordinates)
-      }
-      setPlotData(collection)
-    } 
-  };
-
-  const handleApplyClick = () => {
+  const handleApplyClick = useCallback(() => {
     console.log("Apply button clicked in MapFrame");
-    console.log(polygonCoordinates)
-    console.log(PlotData)
-    console.log("Data before Send")
-    onMapClick({polygonCoordinates,PlotData})
-    ;  // Trigger the onMapClick callback passed from the parent
-  };
-
-  const sendBundle = (Bundle) => {
-    onMapClick(Bundle)
-  }
-
+    console.log(polygonCoordinates);
+    console.log(PlotData);
+    console.log("Data before Send");
+    onMapClick({ polygonCoordinates, PlotData });
+  }, [onMapClick, polygonCoordinates, PlotData]);
 
   return (
     <div className="MapBoxContainerForDraw">
       <iframe src="/mapdrawing.html" title="Google Map"></iframe>
-      <button className="ClickBut" onClick={handleApplyClick}>Apply</button>
+      <button className="ClickBut" onClick={handleApplyClick}>
+        Apply
+      </button>
     </div>
   );
 };

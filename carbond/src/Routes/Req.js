@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import MapFrame from './Mapframe';
 import './css/Comp.css';
-
+import StaticmapwithPolygon from './StaticmapwithPolygon';
 const Request = () => {
   const [isMapFrameVisible, setIsMapFrameVisible] = useState(true);
   const [jsonData, setJsonData] = useState(null);
@@ -16,13 +16,18 @@ const Request = () => {
     
   };
 
+  const SubmitPlot = () => {
+
+  }
+
   useEffect(()=> {
     /*console.log("Use effect JSON")
     console.log("JSON0");
     console.log(jsonData.PlotData.Area)
     console.log(jsonData.PlotData.PlotCenter[0])
-    console.log(jsonData.PlotData.PlotCenter[1])
-    console.log(jsonData)*/
+    console.log(jsonData.PlotData.PlotCenter[1])*/
+    console.log(jsonData)
+    
   })
  
 
@@ -37,18 +42,49 @@ const Request = () => {
           
         {!isMapFrameVisible && jsonData?.PlotData && (
           <>
-           
-            <h1>Area : {Math.floor(jsonData.PlotData.Area * 625) } Rai</h1>
-            <p>Latiude: {jsonData.PlotData.PlotCenter?.[0]}</p>
-            <p>Longitude : {jsonData.PlotData.PlotCenter?.[1]}</p>
-            <h1>Estimate </h1>
-            <h1>Carbon Credit Cap {Math.floor(jsonData.PlotData.Area * 625 * 0.6)} </h1>
-            <h1>Value in 1 year  {Math.floor(jsonData.PlotData.Area * 625 * 0.6) * 300} THB </h1>
+          <div className='ResBox'>
+            <div className='LeftBundle'>
+              <div className='Polymap'>
+
+              
+          <StaticmapwithPolygon  initialCenter={{ Label: "x" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
+          </div>
+          </div>
+            <div className='RightBundle'>
+            <div className='Subbox1x'>
+            <h1 style={{color:"#38991C", lineHeight :"3vh"}}>Area : {Math.floor(jsonData.PlotData.Area * 625) } Rai</h1>
+              
+              <table class="invisible-border-table">
+                <tr>
+                  <td>Latiude</td>
+                  <td>: {jsonData.PlotData.PlotCenter?.[0]}</td>
+                </tr>
+                <tr>
+                  <td>Longitude</td>
+                  <td>: {jsonData.PlotData.PlotCenter?.[1]}</td>
+                </tr>
+              </table>
+
+            </div>
+            
+            <div className='Subbox1x'>
+            
+              <span>
+              <h1 style={{color:"#38991C"}} >Estimate return</h1>
+              <p>Carbon Credit Cap {Math.floor(jsonData.PlotData.Area * 625 * 0.6)} Credits / year</p>
+              <p>Project Value in 1 year  {Math.floor(jsonData.PlotData.Area * 625 * 0.6) * 300} THB </p>
+              </span>
+            </div>
+          </div>
+          </div>
+          <button className="ClickBut" onClick={() => SubmitPlot()}>Apply</button>
+          <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
           </>
         )}
 
-        {!isMapFrameVisible && (
+        {!isMapFrameVisible && !(jsonData?.PlotData) &&(
           <>
+            <h1>There is no data</h1>
             <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
         </>
         )}
