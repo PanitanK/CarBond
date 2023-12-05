@@ -132,7 +132,7 @@ function Home() {
             </div>
             <div
               className={`sidebar-option ${mode === '/option4' ? 'active' : ''}`}
-          
+              onClick={() => handleMode('/option4')}
             >
               <img src={PartnersIcon} alt="UGBN" className="IconClass" />
               <span>Partners</span>
