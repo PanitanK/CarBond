@@ -1,7 +1,7 @@
 import './css/App.css';
-import Title from './image/logo/CBX_Transparent.png';
+import Title from './image/logo/TitleCB.png';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { auth } from './Firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -9,13 +9,10 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState(null);
+  const [ErrMSG, setErrMsg] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.scrollTo(0, 100); // Scroll to the top of the page
-    // ... other useEffect code ...
-  }, []);
+ 
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -39,36 +36,33 @@ function Login() {
       setErrMsg(errorCode + '  ' + errorMessage);
     }
   };
-
+  const handleClick2 = () =>{
+    navigate('/Register');
+  }
   return (
-    <div className="App">
+    <div className="LoginPage">
       <div className="static-bar">
         <div className="left-content">
-          <a href="/">
-            <img src={Title} alt="Title" />
-          </a>
-        </div>
-
-        <div className="right-content">
-          <Link to="/Login">
-            <button class="btn1">Login</button>
-          </Link>
-
-          <Link to="/Register">
-            <button class="btn2">Register</button>
+          <Link to="/">
+            <img className="title-image" src={Title} alt="Title" />
           </Link>
         </div>
+        <div className="green-box3" onClick={handleClick2}>
+          
+          <h1 className="green-box-text3">NOT A MEMBER ?</h1>
+        </div>
+
       </div>
 
-      <div className="App-header"> 
-      <div className="centering-wrapper" style={{ transform: "scale(0.8)" }} >
-      <div className="section1 text-center">
-        
-      <div className="primary-header"><h1>Login</h1></div>
-        <Link to="/Register" class="link2">Don't have an account?</Link>
+      <div className="App-header-login">
+ 
+      <div className="LogRegBox">
+        <h1>Login</h1>
+    
+ 
         <form onSubmit={handleLogin}>
 
-          <div>
+          <div> 
             <h5 htmlFor="Email" class="input-placeholder">Email</h5>
             <input
               type="text"
@@ -91,17 +85,19 @@ function Login() {
               required
             />
           </div>
-          <p>{errMsg}</p>
-          <Link to="/ForgotPassword" class="link2">Forgot Password? </Link>          
+         
+        
         <div>
-        <button type="submit"class="submit-button">Login</button>
+        <div className="button-container">
+            <button type="submit" className="submit-button">ENTER</button>
+            <p className="error-message">{ErrMSG}</p>
+          </div>
         </div>
         </form>
-        
       </div>
     </div>
-    </div>
-    </div>
+  </div>
+
   );
 }
 

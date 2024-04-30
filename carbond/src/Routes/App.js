@@ -19,7 +19,7 @@ function App() {
 
   const handleClick2 = () => {
     // Navigate to the "/info" route
-    navigate('/Home' , { state: { userUID: "T8qpBOb5mkTsQUjagbq3UmwePMq2"} });
+    navigate('/login');
   };
 
   return (

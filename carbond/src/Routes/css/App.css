@@ -1,3 +1,7 @@
+:root {
+  --CarbondBlue: #02122B;
+}
+
 .App {
     text-align: center;
     padding-top: 5vh;
@@ -33,6 +37,108 @@
     margin: 0 auto; /* Center content horizontally */
   }
 
+  .App-header-login {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 60vh; /* Use full viewport height */
+    width: 50vw;
+    border: 1vw solid var(--CarbondBlue);
+
+    margin-top: 20vh;
+
+  }
+
+  .App-header-Reg {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 60vh; /* Use full viewport height */
+    width: 50vw;
+    border: 1vw solid var(--CarbondBlue);
+    padding: 2vw; /* Add padding for spacing */
+    margin-top: 10vh;
+    
+
+  }
+
+  .input-placeholder {
+    width: 50%;
+ 
+    margin-bottom: 1vh;
+    text-align: left;
+  }
+  .input-placeholder2 {
+    width: 50%;
+ 
+    margin-bottom: 1vh;
+    text-align: left;
+  }
+  .LoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+
+
+  }
+  .RegPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    overflow: hidden;
+    background-color: #b52525;
+
+  }
+  .form-style {
+    width: 40vw;
+    padding: 1vh;
+    border: 0.25vw solid var(--CarbondBlue); ;
+  }
+  .form-style2 {
+    width: 15vw;
+    padding: 1vh;
+    border: 0.25vw solid var(--CarbondBlue); ;
+  }
+  .form-style3 {
+    width: 18vw;
+    padding: 1vh;
+    border: 0.25vw solid var(--CarbondBlue); ;
+ 
+  }
+  .NameRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0vh; /* Add margin-bottom for spacing */
+  }
+  
+  .submit-button {
+    background-color: var(--CarbondBlue);
+    color: white;
+    border: none;
+    padding: 1vw 2vw ;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2vh;
+  }
+
+  .submit-button:hover {
+    background-color: darkblue;
+  }
+  
+  .button-container {
+    margin-top: 2vh;
+    display: flex;
+    align-items: center; /* Center items vertically */
+  }
+  
+  .error-message {
+    margin-left: 10px; /* Add margin between button and error message */
+  }
 /* App.css */
 
 .static-bar {
@@ -105,6 +211,28 @@
 
 }
 
+.green-box3 {
+  background-color: #38991C; /* Green color for the box */
+ 
+  margin-left: 60%; /* Push the green box to the right */
+  height: 100%; /* Same height as static bar */
+ 
+  margin-right: 0vh; /* Space from the right */
+ 
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+  @media screen and (min-width: 1024px) {/*  iPads  */
+    width: 15vw; 
+  }
+
+  @media screen and (max-height: 600px) {/* laptops */
+     
+  }
+  
+
+}
 .green-box-link {
   color: #fff;
   text-decoration: none;
@@ -133,6 +261,16 @@
 
 .green-box-text2 {
   margin-left: 10%; /* Adjust the space between the SVG and the text */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  padding-right: 5%;
+
+}
+
+.green-box-text3 {
+  margin-left: 5%; /* Adjust the space between the SVG and the text */
   color: white;
   font-weight: bold;
   font-size: 16px;

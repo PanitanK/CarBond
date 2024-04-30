@@ -1,21 +1,18 @@
 import './css/App.css';
 //import { Link } from "react-router-dom";
-import Title from './image/logo/CBX_Transparent.png';
-import placeholderImage from './image/logo/Placeholder.png';
-import React, { useState,useEffect } from 'react';
+import Title from './image/logo/TitleCB.png';
+//import placeholderImage from './image/logo/Placeholder.png';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { auth , db ,storage } from './Firebase';
+import { auth , db  } from './Firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {  doc, setDoc } from 'firebase/firestore';
-import {  ref , uploadBytes} from 'firebase/storage';
+
 
 
 function Register() {
-  useEffect(() => {
-    window.scrollTo(0, 200); // Scroll to the top of the page
-    // ... other useEffect code ...
-  }, []);
+ 
  
   const [email, regEmail] = useState('');
   const [password, regPassword] = useState('');
@@ -24,7 +21,7 @@ function Register() {
   const [Lastname,regLastName] = useState('');
   const navigate = useNavigate();
 
-  const createUserFolder = async (userId) => {
+  /*const createUserFolder = async (userId) => {
     try {
       // Create a user-specific folder using the user's UID
       const userFolderRef = ref(storage,  userId + '/');
@@ -40,7 +37,7 @@ function Register() {
       console.error('Error creating user folder: ', error);
     }
   };
-
+  */
   const createUserDocumentAndSubcollections = async (userId, dataCollection, profileData) => {
     try {
       // Create user document using UID
@@ -59,7 +56,9 @@ function Register() {
       console.error('Error creating user document and subcollections: ', error);
     }
   };
-
+  const handleClick2 = () =>{
+    navigate('/Login');
+  }
   const Reg = async (event) => {
     event.preventDefault();
     //console.log('Submitted username:', email);
@@ -96,7 +95,7 @@ function Register() {
       // Create user document and storage folder simultaneously
       await Promise.all([
         createUserDocumentAndSubcollections(user.uid, dataCollection, profileData),
-        createUserFolder(user.uid)
+        //createUserFolder(user.uid)
       ]);
 
       //console.log('Both Firebase and Storage operations are successful');
@@ -114,57 +113,54 @@ function Register() {
   
   return (
     
-  <div className="App">
+    <div className="LoginPage">
     <div className="static-bar">
-      <div className="left-content">
-        <a href="/">
-          <img src={Title} alt="Title" /> 
-        </a>
-      </div>
-
-      <div className="right-content">
-        
-        <Link to="/Login">
-          <button class="btn1">Login</button>
-        </Link>
-
-        <Link to="/Register">
-        <button class="btn2">Register</button>
-        </Link>
+        <div className="left-content">
+          <Link to="/">
+            <img className="title-image" src={Title} alt="Title" />
+          </Link>
+        </div>
+        <div className="green-box3" onClick={handleClick2}>
+          
+          <h1 className="green-box-text3">ALREADY A MEMBER ?</h1>
+        </div>
 
       </div>
-
-    </div>
-
-     <div className="App-header">
-      <div className="centering-wrapper"style={{ transform: "scale(0.8)" }} >
-        <div className="section1 text-center">
-          <div className="primary-header"><h1>Register</h1></div>        
+     
+      <div className="App-header-Reg" >
+  
+        <h1>Register</h1> {/* Add "Register" title */}
+    
         
         <form onSubmit={Reg}>
+        
+        <div className='NameRow'>
           
           <div>
-            <h5 htmlFor="First_Name"class="input-placeholder">Firstname</h5>
+            <h5 htmlFor="First_Name"class="input-placeholder2">Firstname</h5>
             <input
               type="text"
               id="Firstname"
-              class="form-style"
+              class="form-style2"
               value={Firstname}
               onChange={(e) => regFirstName(e.target.value)}
               required
             />
           </div>
           <div>
-            <h5 htmlFor="Last_Name" class="input-placeholder">Lastname</h5>
+            <h5 htmlFor="Last_Name" class="input-placeholder2">Lastname</h5>
             <input
               type="text"
               id="Lastname"
-              class="form-style"
+              class="form-style3"
               value={Lastname}
               onChange={(e) => regLastName(e.target.value)}
               required
             />
           </div>
+          </div>
+
+
           <div>
             <h5 htmlFor="Email"class="input-placeholder">Email</h5>
             <input
@@ -187,18 +183,16 @@ function Register() {
               required
             />
           </div>
-          <Link to="/Login" class="link">Already a user ?</Link>
-          <p>{ErrMSG}</p>
-          <div>
-          <button type="submit" class="submit-button">ENTER</button>
+          
+          <div className="button-container">
+            <button type="submit" className="submit-button">ENTER</button>
+            <p className="error-message">{ErrMSG}</p>
           </div>
           
           
         </form>
         
       </div>
-    </div>
-    </div>
     </div>
 
   
