@@ -1,5 +1,6 @@
 :root {
-  --CarbondBlue: #02122B;
+  --CarbondBlue: #01112A;
+  --CarbondGreen: #38991C;
 }
 
 .App {
@@ -83,15 +84,6 @@
     min-height: 100vh;
     overflow: hidden;
 
-
-  }
-  .RegPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 90vh;
-    overflow: hidden;
-    background-color: #b52525;
 
   }
   .form-style {
@@ -864,4 +856,20 @@
   /* Add any other styles as needed */
   /*border: 2px solid rgb(255, 255, 255);*/ 
   margin-left: 50px;
+}
+
+.ErrorPage {
+  display: flex;
+  background-color: var(--CarbondBlue);
+  width: 50vw;
+  height: 50vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.ErrorContent a{
+  color: rgb(150, 237, 150);
+  font-size: 2vw;
+
 }
