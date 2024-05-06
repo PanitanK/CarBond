@@ -10,7 +10,9 @@ import RequestIcon from './image/svg/Request.png';
 import PartnersIcon from './image/svg/Partners.png';
 import MarketIcon from './image/svg/Market.png';*/
 import UserIcon from './image/svg/person.png';
-
+import active from'./image/svg/Active.png';
+import cre from'./image/svg/cre.svg';
+import add from'./image/svg/add.svg';
 import { Link } from "react-router-dom";
 
 import ContentBoard from './ContentBoard';
@@ -130,7 +132,7 @@ function Home() {
               className={`sidebar-option ${mode === '/option2' ? 'active' : ''}`}
               onClick={() => handleMode('/option2')}
             >
-              <img src={RequestIcon} alt="UGBN" className="IconClass" />
+              <img src={active} alt="UGBN" className="IconClass" />
               <span>Active Projects</span>
             </div>
 
@@ -138,8 +140,24 @@ function Home() {
               className={`sidebar-option ${mode === '/option3' ? 'active' : ''}`}
               onClick={() => handleMode('/option3')}
             >
+              <img src={add} alt="UGBN" className="IconClass" />
+              <span>Add Field</span>
+            </div>
+
+            <div
+              className={`sidebar-option ${mode === '/option4' ? 'active' : ''}`}
+              onClick={() => handleMode('/option4')}
+            >
+              <img src={cre} alt="UGBN" className="IconClass" />
+              <span>Credential</span>
+            </div>
+
+            <div
+              className={`sidebar-option ${mode === '/option5' ? 'active' : ''}`}
+              onClick={() => handleMode('/option5')}
+            >
               <img src={RequestIcon} alt="UGBN" className="IconClass" />
-              <span>Settings</span>
+              <span>Properties</span>
             </div>
             
           </div>

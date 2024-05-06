@@ -24,11 +24,7 @@ const HomeMode = (DataPackage) => {
         </div>
       ) }
       {/*<div className='Polymap'>
-
-              
-          <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
-  </div> */}
-      <div className='BondBox'>
+        <div className='BondBox'>
         <h1>Active Bond</h1>
         {Intermediate !== null ? (
           // Display content if Intermediate is not null
@@ -58,6 +54,14 @@ const HomeMode = (DataPackage) => {
           
       </div>
 
+              
+          <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
+  </div> */}
+
+
+
+  
+      
    
     </div>
   );
