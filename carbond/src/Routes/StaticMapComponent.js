@@ -2,7 +2,7 @@ import React from 'react';
 import './css/App.css';
 
 function StaticMapComponent({ initialCenter }) {
-  const apiKey = 'AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk';
+  const apiKey = 'AIzaSyCREEB2-SgUZ8ozGu4HEUxv-lQiSqjuevE';
 
   // Check if initialCenter is not yet available
   if (!initialCenter) {

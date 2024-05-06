@@ -2,7 +2,7 @@ import React from 'react';
 import './css/App.css';
 
 function StaticmapwithPolygon({ initialCenter }) {
-  const apiKey = 'AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk'; 
+  const apiKey = 'AIzaSyCREEB2-SgUZ8ozGu4HEUxv-lQiSqjuevE'; 
 
   // Check if initialCenter is not yet available
   if (!initialCenter) {
@@ -23,8 +23,10 @@ function StaticmapwithPolygon({ initialCenter }) {
   // Change the 'color' parameter to specify the desired pin color
   const pinColor = 'white'; // Change this to the desired color (e.g., 'red', 'green', 'blue', etc.)
 
-  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${initialCenter.lat},${initialCenter.lng}&zoom=14&size=400x400&maptype=satellite&markers=label:${pinLabel}|color:${pinColor}|${initialCenter.lat},${initialCenter.lng}&path=color:blue|fillcolor:red|${polygonPath}&key=${apiKey}`;
-
+  //const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${initialCenter.lat},${initialCenter.lng}&zoom=14&size=400x400&maptype=satellite&markers=label:${pinLabel}|color:${pinColor}|${initialCenter.lat},${initialCenter.lng}&path=color:blue|fillcolor:red|${polygonPath}&key=${apiKey}`;
+  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=40.7128,-74.0060&zoom=12&size=400x400&key=${apiKey}`
+  console.log("This is map URL")
+  console.log(mapUrl)
   return (
     <div> 
       <div>
