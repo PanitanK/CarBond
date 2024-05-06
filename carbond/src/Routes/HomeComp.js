@@ -15,8 +15,11 @@ const HomeMode = (DataPackage) => {
   return (
     <div className='BigBox'>
       {Intermediate == null ? (<div className='Mapbox'>
-      <StaticMapComponent initialCenter={{ lat: userData[0].Latitude, lng: userData[0].Longitude,PlotDoc:plotDocuments }} />  
-      </div>) : (
+      <h1>You have no active Projects</h1>
+      </div>
+      
+    
+    ) : (
        
         <div className='Mapbox'>
         <StaticmapwithPolygon initialCenter={{ Label: "1" ,lat: Intermediate.PlotData.PlotCenter[0], lng: Intermediate.PlotData.PlotCenter[1],Plotpolygon:Intermediate.polygonCoordinates }} />  
@@ -60,7 +63,7 @@ const HomeMode = (DataPackage) => {
 
 
 
-  
+
       
    
     </div>

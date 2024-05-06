@@ -6,7 +6,33 @@ import StaticmapwithPolygon from './StaticmapwithPolygon';
 const Request = ({onSubmit}) => {
   const [isMapFrameVisible, setIsMapFrameVisible] = useState(true);
   const [jsonData, setJsonData] = useState(null);
- /* <div className='BigBox2'>
+ /* */
+    
+  const handleMapClick = (Bundle) => {
+    setJsonData(Bundle);
+
+    if (isMapFrameVisible) {
+      setIsMapFrameVisible(!isMapFrameVisible);
+    } 
+    
+    
+  };
+
+  const SubmitPlot = (Data) => {
+    console.log("Submitting Data ")
+    console.log(Data)
+    onSubmit(Data);
+
+  }
+
+  useEffect(()=> {
+
+    
+  })
+ 
+
+  return (
+    <div className='BigBox2'>
       <div className='Topbox2'>
         {isMapFrameVisible  &&(
           <>
@@ -65,34 +91,6 @@ const Request = ({onSubmit}) => {
 
       </div>
     
-    </div>*/
-    
-  const handleMapClick = (Bundle) => {
-    setJsonData(Bundle);
-
-    if (isMapFrameVisible) {
-      setIsMapFrameVisible(!isMapFrameVisible);
-    } 
-    
-    
-  };
-
-  const SubmitPlot = (Data) => {
-    console.log("Submitting Data ")
-    console.log(Data)
-    onSubmit(Data);
-
-  }
-
-  useEffect(()=> {
-
-    
-  })
- 
-
-  return (
-    <div>
-
     </div>
   );
 };

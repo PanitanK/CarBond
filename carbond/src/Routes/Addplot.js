@@ -1,64 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MapFrame from './Mapframe';
 import './css/Comp.css';
-import { useState } from 'react';
+import StaticmapwithPolygon from './StaticmapwithPolygon';
+import Geolocate from './Geolocate';
+const AddPlot = ({onSubmit}) => {
+  const [isMapFrameVisible, setIsMapFrameVisible] = useState(true);
+  const [jsonData, setJsonData] = useState(null);
+  const [addressData, setAddressData] = useState({ subdistrict: '', district: '', province: '' });
 
-const AddPlot = () => {
-  const [formData, setFormData] = useState({
-    plotId: '',
-    plotName: '',
-    plotSize: '',
-    plantingDistance: '',
-    latitude: '',
-    longitude: '',
-    sequenceNumber: '',
-    treeSpecies: '',
-    ageYears: '',
-    dbhCm: '',
-    heightMeters: '',
-  });
+  const handleAddressUpdate = (address) => {
+  setAddressData(address); // Update state with address data
+  console.log("This is address from addplot")
+  console.log(address)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+};  
+  const handleMapClick = (Bundle) => {
+    setJsonData(Bundle);
+    console.log(Bundle)
+
+    if (isMapFrameVisible) {
+      setIsMapFrameVisible(!isMapFrameVisible);
+    } 
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here, you can access form data via formData
-    console.log(formData);
-    // Example: You can send formData to an API or perform other actions
-  };
+  const SubmitPlot = (Data,Addr) => {
+    console.log("Submitting Data ")
+    onSubmit(Data,Addr);
+  }
+  
+  /*useEffect(()=> {
+  })*/
+ 
 
   return (
-    <form onSubmit={handleSubmit} className="AddplotContainer">
-    <div className="label-input-container">
-      <label htmlFor="plotId">Plot ID:</label>
-      <input
-        type="text"
-        id="plotId"
-        name="plotId"
-        value={formData.plotId}
-        onChange={handleChange}
-        required
-      />
+    <div className='BigBox2'>
+      <div className='Topbox2'>
+        {isMapFrameVisible  &&(
+          <>
+            <MapFrame onMapClick={handleMapClick} />
+       </>
+        )}
+          
+        {!isMapFrameVisible && jsonData?.PlotData && (
+          <>
+          <div className='ResBox'>
+            <div className='LeftBundle'>
+              <div className='Polymap'>
+
+              
+          <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
+          </div>
+          </div>
+            <div className='RightBundle'>
+            <div className='Subbox1x'>
+            <h1 style={{color:"#38991C", lineHeight :"3vh"}}>Area : {Math.floor(jsonData.PlotData.Area * 625) } Rai</h1>
+              
+              <table class="invisible-border-table">
+                <tr>
+                  <td>Latiude</td>
+                  <td>: {jsonData.PlotData.PlotCenter?.[0]}</td>
+                </tr>
+                <tr>
+                  <td>Longitude</td>
+                  <td>: {jsonData.PlotData.PlotCenter?.[1]}</td>
+                </tr>
+                <tr>
+                  <td>Location</td>
+                  <td><Geolocate latitude={jsonData.PlotData.PlotCenter?.[0]} longitude={jsonData.PlotData.PlotCenter?.[1]} onAddressUpdate={handleAddressUpdate} /></td>
+                </tr>
+              </table>
+
+            </div>
+            
+            <div className='Subbox1x'>
+            
+        
+            </div>
+          </div>
+          </div>
+          <button className="ClickBut" onClick={() => SubmitPlot(jsonData,addressData)}>Apply</button>
+          <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
+          </>
+        )}
+
+        {!isMapFrameVisible && !(jsonData?.PlotData) &&(
+          <>
+            <h1>There is no data</h1>
+            <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
+        </>
+        )}
+
+      </div>
+    
     </div>
-    <div className="label-input-container">
-      <label htmlFor="plotName">Plot Name:</label>
-      <input
-        type="text"
-        id="plotName"
-        name="plotName"
-        value={formData.plotName}
-        onChange={handleChange}
-        required
-      />
-    </div>
-    {/* Add other input fields similarly */}
-    <button type="submit">Submit</button>
-  </form>
   );
 };
 

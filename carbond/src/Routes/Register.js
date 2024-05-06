@@ -47,7 +47,11 @@ function Register() {
       const dataDocumentId = 'Credential_Data'; // Replace with your desired custom document ID
       const dataDocumentRef = doc(db, 'USERS', userId, 'DataCollection', dataDocumentId);
       await setDoc(dataDocumentRef, dataCollection);
-  
+      
+      const plotDataDocumentId = 'Placeholder'; // Replace with your desired custom document ID
+      const plotDataDocumentRef = doc(db, 'USERS', userId, 'PlotCollection', plotDataDocumentId);
+      await setDoc(plotDataDocumentRef,{});  
+      
       const profileDocumentId = 'Profile_Data'; // Replace with your desired custom document ID
       const profileDocumentRef = doc(db, 'USERS', userId, 'ProfileCollection', profileDocumentId);
       await setDoc(profileDocumentRef, profileData);

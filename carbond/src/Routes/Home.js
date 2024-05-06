@@ -125,9 +125,6 @@ function Home() {
               <img src={HomeIcon} alt="UGBN" className="IconClass" />
               <span>Home</span>
             </div>
-            
-            
-            
             <div
               className={`sidebar-option ${mode === '/option2' ? 'active' : ''}`}
               onClick={() => handleMode('/option2')}
@@ -135,7 +132,6 @@ function Home() {
               <img src={active} alt="UGBN" className="IconClass" />
               <span>Active Projects</span>
             </div>
-
             <div
               className={`sidebar-option ${mode === '/option3' ? 'active' : ''}`}
               onClick={() => handleMode('/option3')}
@@ -143,7 +139,6 @@ function Home() {
               <img src={add} alt="UGBN" className="IconClass" />
               <span>Add Field</span>
             </div>
-
             <div
               className={`sidebar-option ${mode === '/option4' ? 'active' : ''}`}
               onClick={() => handleMode('/option4')}
@@ -151,7 +146,6 @@ function Home() {
               <img src={cre} alt="UGBN" className="IconClass" />
               <span>Credential</span>
             </div>
-
             <div
               className={`sidebar-option ${mode === '/option5' ? 'active' : ''}`}
               onClick={() => handleMode('/option5')}
@@ -159,13 +153,11 @@ function Home() {
               <img src={RequestIcon} alt="UGBN" className="IconClass" />
               <span>Properties</span>
             </div>
-            
           </div>
         </div>
   
         <div className="ContentBoard">
-        
-          <ContentBoard mode = {mode} userData={userData} plotDocuments={plotDocuments}/>
+          <ContentBoard mode = {mode} userData={userData} plotDocuments={plotDocuments} UID = {userUID}/>
         </div>
       </div>
     );
