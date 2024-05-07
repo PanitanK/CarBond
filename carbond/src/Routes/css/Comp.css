@@ -45,7 +45,8 @@
 
 }
 .MapBoxInfo {
- 
+  justify-content: left;
+  align-items: left;
   text-align: left;
 }
 .MapContentFeedback{
@@ -407,4 +408,11 @@
     border: 0px;
     width: 20vw;
     height: 4vh;
+  }
+
+  select {
+    background-color: rgb(208, 207, 207);
+    border: 0px;
+    width: 21vw;
+    height: 5vh;
   }

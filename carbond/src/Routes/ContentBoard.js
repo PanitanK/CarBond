@@ -7,10 +7,10 @@ import Addplot from './Addplot'
 import Credential from './Credential'
 import Properties from './Properties'
 import { db } from './Firebase';
-import {  doc,setDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, doc,setDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
 
 function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
-
+  const [reports, setReports] = useState([]);
   const [ Currmode , setCurrmode] = useState(null);
   const [ index , setIndex] = useState(0);
   const uploadDataToPlotCollection = async (userId, data, address) => {
@@ -27,7 +27,7 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
       
       // Set data and address fields in the new document
       await setDoc(newDocumentRef, { data, address });
-      console.log('Data document added successfully:', newDocumentRef.id);
+      //console.log('Data document added successfully:', newDocumentRef.id);
       window.location.reload();
       
 
@@ -41,14 +41,16 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
   }
 
   const onHomeClick = () => {
-    console.log("On Home Clicking")
+    //console.log("On Home Clicking")
     setCurrmode("/option3")
     handleModeChange('/option3'); 
   }
   const handleMapboxClick = (Input) => {
-    console.log("Index clicked in ContentBoard:", index);
+    //console.log("Index clicked in ContentBoard:", index);
     setCurrmode("/option2")
     handleModeChange('/option2'); 
+    //console.log("Fetcting reports")
+    fetchReports(Input+1)
     setIndex(Input+1)
   };
 
@@ -67,8 +69,8 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
   };
 
   const handleCredEdit = async (data) => {
-    console.log("Index clicked in ContentBoard:", index);
-    console.log(data)
+    //console.log("Index clicked in ContentBoard:", index);
+    //console.log(data)
     try {
       const plotCollectionRef = collection(db, 'USERS', UID, 'PlotCollection');
       const plotDocumentRef = doc(plotCollectionRef, `Plot_No.${index}`); // Reference to the specific document
@@ -86,6 +88,50 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
 
   };
 
+  const handlePropAppend = async (data) => {
+    //console.log("Index clicked in ContentBoard:", index);
+    //console.log(data);
+    
+    // Create a reference to the "report" collection within the specific document
+    const plotCollectionRef = collection(db, 'USERS', UID, 'PlotCollection');
+    const plotDocumentRef = doc(plotCollectionRef, `Plot_No.${index}`); // Reference to the specific document
+    const reportCollectionRef = collection(plotDocumentRef, 'Reports');
+    
+    // Add a new document to the "report" collection with your data
+    addDoc(reportCollectionRef, data)
+      .then((docRef) => {
+        console.log('Document added to report collection with ID:', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Error adding document to report collection:', error);
+      });
+  };
+
+  const fetchReports = async () => {
+    const plotCollectionRef = collection(db, 'USERS', UID, 'PlotCollection');
+    const plotDocumentRef = doc(plotCollectionRef, `Plot_No.${index}`);
+    const reportsCollectionRef = collection(plotDocumentRef, 'Reports'); // Reference to "Reports" collection
+
+    //console.log(`Plot_No.${index}`)
+
+
+    try {
+      const querySnapshot = await getDocs(reportsCollectionRef);
+      const fetchedReports = [];
+      querySnapshot.forEach((doc) => {
+        fetchedReports.push({ id: doc.id, ...doc.data() });
+      });
+      setReports(fetchedReports);
+    } catch (error) {
+      console.error('Error fetching documents from "Reports" collection:', error);
+    }
+  };
+  //console.log("ihave reports")
+  //console.log(reports)
+  const handleExportPDF = () =>{
+    console.log("Im PRINTING")
+    window.print()
+  }
   useEffect(() => {
     setCurrmode(mode); // Update CurrMode when mode changes
   }, [mode]);
@@ -94,13 +140,13 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
     case '/option1':
       return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
     case '/option2':
-      return <Active DataPackage={{ userData, plotDocuments, index }} CredClick={handleCredClick} PropClick={handlePropClick}/>;
+      return <Active DataPackage={{ userData, plotDocuments, index, reports }} CredClick={handleCredClick} PropClick={handlePropClick} Export={handleExportPDF}/>;
     case '/option3':
       return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />
     case '/option4':
       return <Credential DataPackage={{userData , plotDocuments, index}} editCred={handleCredEdit}/>;
     case '/option5':
-      return <Properties DataPackage={{userData , plotDocuments, index}}/>;
+      return <Properties DataPackage={{userData , plotDocuments, index}} editProp={handlePropAppend}/>;
 
 
     default:

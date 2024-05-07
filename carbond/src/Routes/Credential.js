@@ -87,7 +87,7 @@ const Credential = ({DataPackage,editCred}) => {
         
        
         
-        <button className='Applebutton'>Edit</button>
+        <button className='Applebutton'>EDIT</button>
         </div>
 
         <div className='Applefilling'>  

@@ -2,21 +2,39 @@ import React from 'react';
 import './css/Comp.css';
 import { useState } from 'react';
 
-const Properties = () => {
+const Properties = ({DataPackage,editProp}) => {
   const [formData, setFormData] = useState({
-    plotId: '',
-    plotName: '',
-    plotSize: '',
-    plantingDistance: '',
-    latitude: '',
-    longitude: '',
-    sequenceNumber: '',
-    treeSpecies: '',
-    ageYears: '',
-    dbhCm: '',
-    heightMeters: '',
+    Weight:0,
+    Percentage:'',
+    Age:'',
+
+    
   });
 
+  const getCurrentMonthYear = () => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const currentDate = new Date();
+    const monthIndex = currentDate.getMonth(); // Get the month index (0-11)
+    const month = months[monthIndex]; // Get the month abbreviation from the array
+
+    const year = currentDate.getFullYear(); // Get the full year (e.g., 2024)
+  
+    const formattedDate = `${month} ${year}`; // Combine month and year with a space in between
+  
+    const [Createddday, Createdmonth, Createdyear] = DataPackage.userData[0].Created_Date.split('/');
+    console.log([parseInt(Createddday), parseInt(Createdmonth), parseInt(Createdyear)])
+    console.log(monthIndex+1)
+    console.log(year)
+    const age = (((year - Createdyear) + ((Createdmonth - monthIndex+1)/12) ) + 8).toFixed(2)
+    console.log(age)
+    const CM = months[Createdmonth-1]
+    const Created = CM +" "+Createdyear
+    return {formattedDate , age , Created }; // Return the formatted date string (e.g., "Mar 2024")
+  };
+
+
+  const currentMonthYearAge = getCurrentMonthYear();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,14 +45,14 @@ const Properties = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here, you can access form data via formData
     console.log(formData);
-    // Example: You can send formData to an API or perform other actions
+    formData.Age = currentMonthYearAge.age
+    editProp(formData)
   };
-
+  
   return (
     <div className='CredFill'> 
-    <h3>Plot Properties</h3>
+    <h2 style={{marginBottom: "-4vh"}}>Plot Properties</h2>
     <div className="apple-form-container">
       
       <form onSubmit={handleSubmit} className='Appleform'>
@@ -47,98 +65,85 @@ const Properties = () => {
             type="text"
             id="plot_number"
             name="plot_number"
-            value={formData.plot_number}
-            onChange={handleChange}
+            value={DataPackage.index}
+            readOnly
 
           />
         </div>
-        <label >Sub district</label>
+        <label>Created Date</label>
         <div className="apple-form-group">
-          
           <input
             type="text"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-    
+            id="Date"
+            name="Date"
+            value={currentMonthYearAge.Created}
+            readOnly
           />
         </div>
-        <label>District</label>
+        <label style={{ color: 'green',  fontWeight: 'bold'}} >Fertilizer Nitrogen Percentage</label>
         <div className="apple-form-group">
           
-          <input
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-    
-          />
+        <select
+          id="Percentage"
+          name="Percentage"
+          value={formData.Percentage}
+          onChange={handleChange}
+        >
+          <option> </option>
+          <option value="13">13 percent</option>
+          <option value="15">15 percent</option>
+          <option value="21">21 percent</option>
+          <option value="27">27 percent</option>
+          <option value="46">46 percent</option>
+          required
+        </select>
         </div>
-        <label>Province</label>
-        <div className="apple-form-group">
-          
-          <input
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-    
-          />
-        </div>
+       
         
        
         
-        <button className='Applebutton'>Edit</button>
+        <button className='Applebutton'>ENTER</button>
         </div>
 
         <div className='Applefilling'>  
-      <label>Name</label>
+      <label>Month/Year</label>
         <div className="apple-form-group">
           <input
             type="text"
             id="Name"
             name="Name"
-            value={formData.Name}
-            onChange={handleChange}
-
+            value={currentMonthYearAge.formattedDate}
+            readOnly
           />
         </div>
-        <label >Location</label>
+        <label>Age</label>
         <div className="apple-form-group">
-          
           <input
             type="text"
-            id="Location"
-            name="Location"
-            value={formData.Location}
-            onChange={handleChange}
-    
+            id="Age"
+            name="Age"
+            value={currentMonthYearAge.age}
+            readOnly
           />
+          <span> Years</span>
         </div>
-        <label>Area</label>
+        <label style={{ color: 'green',  fontWeight: 'bold'}} >Amount</label>
         <div className="apple-form-group">
           
-          <input
-            id="Area"
-            name="Area"
-            value={formData.Area}
-            onChange={handleChange}
-    
-          />
+        <input
+          type="number"
+          id="Weight"
+          name="Weight"
+          value={formData.Weight} // Set the input value to the numeric value only
+          onChange={handleChange}
+          min="0"
+          required
+        />
+        <span> Kilograms</span>
         </div>
+       
 
-        <label>Planting Distance</label>
-        <div className="apple-form-group">
-          
-          <input
-            id="Area"
-            name="Area"
-            value={formData.planting_distance}
-            onChange={handleChange}
-    
-          />
-        </div>
+        
        
     
         </div>

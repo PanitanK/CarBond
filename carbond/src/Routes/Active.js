@@ -3,9 +3,9 @@ import {React} from 'react';
 import './css/Comp.css'
 import StaticmapwithPolygon from './StaticmapwithPolygon';
   
-const Active = ({ DataPackage,CredClick,PropClick }) => {
-    console.log("hello")
-    console.log(DataPackage)
+const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
+    //console.log("hello")
+    console.log(DataPackage.reports.length);
    
 
     const handleCredClick = () =>{
@@ -15,9 +15,12 @@ const Active = ({ DataPackage,CredClick,PropClick }) => {
     const handlePropClick = () =>{
       PropClick()
     }
+    const handleExport = () =>{
+      Export()
+    }
 
 
-    console.log(DataPackage.plotDocuments[DataPackage.index])
+    //console.log(DataPackage.plotDocuments[DataPackage.index])
     return (
       <div className='Mapcolumn2'>
       <div className='Mapbox2' >
@@ -33,13 +36,24 @@ const Active = ({ DataPackage,CredClick,PropClick }) => {
         </div>
         <div className='MapBoxInfo'>
                 <h1 style={{ marginBottom: '-1vh' }}>Plot No.{DataPackage.index }</h1> {/* Updated line */}
-                <p style={{ marginBottom: '-3vh' }}>Area : {DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area} Rai</p>
+                <p style={{ marginBottom: '-3vh' }}>Area : {DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area.toFixed(2)} Rai</p>
                 <p style={{ marginBottom: '-3vh' }}>Sub-District : {DataPackage.plotDocuments[DataPackage.index].address.subdistrict}</p>
                 <p style={{ marginBottom: '-3vh' }} >District : {DataPackage.plotDocuments[DataPackage.index].address.district}</p>
                 <p style={{ marginBottom: '1vh' }}>Province : {DataPackage.plotDocuments[DataPackage.index].address.province}</p>
-                <button className="ClickBut" onClick={() => handlePropClick()}>Plot Properties</button>
+                {DataPackage.reports.length >= 1 && (
+                    <p>There are {DataPackage.reports.length} reports available.</p>
+                )}
                 
-              </div>
+                
+     
+                <button className="ClickBut" onClick={() => handlePropClick()}>Update Properties</button>
+                <p></p>
+                <button className="ClickBut" onClick={() => handleExport()}>Export</button>
+      
+                
+                </div>
+              
+
 
       </div>
     );
