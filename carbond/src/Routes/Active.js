@@ -16,7 +16,7 @@ const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
       PropClick()
     }
     const handleExport = () =>{
-      Export()
+      window.print()
     }
 
 
@@ -35,11 +35,11 @@ const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
                <button className="ClickBut" onClick={() => handleCredClick()} >Plot Credential</button>
         </div>
         <div className='MapBoxInfo'>
-                <h1 style={{ marginBottom: '-1vh' }}>Plot No.{DataPackage.index }</h1> {/* Updated line */}
-                <p style={{ marginBottom: '-3vh' }}>Area : {DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area.toFixed(2)} Rai</p>
-                <p style={{ marginBottom: '-3vh' }}>Sub-District : {DataPackage.plotDocuments[DataPackage.index].address.subdistrict}</p>
-                <p style={{ marginBottom: '-3vh' }} >District : {DataPackage.plotDocuments[DataPackage.index].address.district}</p>
-                <p style={{ marginBottom: '1vh' }}>Province : {DataPackage.plotDocuments[DataPackage.index].address.province}</p>
+                <h1 style={{ marginBottom: '-1vh' }} className = "editprint">Plot No.{DataPackage.index }</h1> {/* Updated line */}
+                <p style={{ marginBottom: '-3vh'}} className = "editprint">Area : {DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area.toFixed(2)} Rai</p>
+                <p style={{ marginBottom: '-3vh' } } className = "editprint">Sub-District : {DataPackage.plotDocuments[DataPackage.index].address.subdistrict}</p>
+                <p style={{ marginBottom: '-3vh' }} className = "editprint">District : {DataPackage.plotDocuments[DataPackage.index].address.district}</p>
+                <p style={{ marginBottom: '1vh' }} className = "editprint">Province : {DataPackage.plotDocuments[DataPackage.index].address.province}</p>
                 {DataPackage.reports.length >= 1 && (
                     <p>There are {DataPackage.reports.length} reports available.</p>
                 )}

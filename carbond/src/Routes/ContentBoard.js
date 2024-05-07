@@ -130,7 +130,8 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
   //console.log(reports)
   const handleExportPDF = () =>{
     console.log("Im PRINTING")
-    window.print()
+    const printWindow = window.open('/print', '_blank');
+    printWindow.dataToPrint =  { userData, plotDocuments, index, reports }; // Pass the data as a property of the window object
   }
   useEffect(() => {
     setCurrmode(mode); // Update CurrMode when mode changes

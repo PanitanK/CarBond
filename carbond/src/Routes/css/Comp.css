@@ -416,3 +416,25 @@
     width: 21vw;
     height: 5vh;
   }
+
+  @media print {
+    .title-image{
+      visibility: hidden;
+    }
+    .Mapbox2{
+      width: 3in;
+    }
+    .MapBoxInfo h1 {
+      color: black;
+  
+    }
+    .editprint {
+      color: black;
+
+      padding: 8px;
+      
+    }
+    .ClickBut{
+      visibility: hidden;
+    }
+  }
