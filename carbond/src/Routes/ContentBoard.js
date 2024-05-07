@@ -7,7 +7,7 @@ import Addplot from './Addplot'
 import Credential from './Credential'
 import Properties from './Properties'
 import { db } from './Firebase';
-import {  doc,setDoc, collection, getDocs } from 'firebase/firestore';
+import {  doc,setDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
 
 function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
 
@@ -66,6 +66,26 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
 
   };
 
+  const handleCredEdit = async (data) => {
+    console.log("Index clicked in ContentBoard:", index);
+    console.log(data)
+    try {
+      const plotCollectionRef = collection(db, 'USERS', UID, 'PlotCollection');
+      const plotDocumentRef = doc(plotCollectionRef, `Plot_No.${index}`); // Reference to the specific document
+  
+      // Update the Planting_Distance field in the document
+      await updateDoc(plotDocumentRef, {
+        'data.PlotData.Planting_Distance': data
+      });
+  
+      console.log('Planting Distance updated successfully.');
+    } catch (error) {
+      console.error('Error updating Planting Distance:', error);
+    }
+    
+
+  };
+
   useEffect(() => {
     setCurrmode(mode); // Update CurrMode when mode changes
   }, [mode]);
@@ -78,9 +98,9 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
     case '/option3':
       return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />
     case '/option4':
-      return <Credential DataPackage={{userData , plotDocuments}}/>;
+      return <Credential DataPackage={{userData , plotDocuments, index}} editCred={handleCredEdit}/>;
     case '/option5':
-      return <Properties DataPackage={{userData , plotDocuments}}/>;
+      return <Properties DataPackage={{userData , plotDocuments, index}}/>;
 
 
     default:

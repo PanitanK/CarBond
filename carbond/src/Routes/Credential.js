@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './css/Comp.css';
 
-const Credential = ({DataPackage}) => {
+const Credential = ({DataPackage,editCred}) => {
   const [formData, setFormData] = useState({
-    plot_number: '',
+    /*plot_number: '' ,
     Name: '',
     address: '',
     sub_district: '',
@@ -11,8 +11,8 @@ const Credential = ({DataPackage}) => {
     province: '',
     Area: '',
     latitude: '',
-    longitude: '',
-    planting_distance: '',
+    longitude: '',*/
+    planting_distance: '2.5x8'
   });
 
   const handleChange = (e) => {
@@ -24,12 +24,16 @@ const Credential = ({DataPackage}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission logic here
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', formData.planting_distance);
+    editCred(formData.planting_distance)
+
   };
+
+
+  //console.log(DataPackage.plotDocuments[DataPackage.index].address.subdistrict)
   return (
     <div className='CredFill'> 
-    <h3>Plot Credential</h3>
+    <h2 style={{marginBottom: "-4vh"}}>Plot Credential</h2>
     <div className="apple-form-container">
       
       <form onSubmit={handleSubmit} className='Appleform'>
@@ -42,9 +46,8 @@ const Credential = ({DataPackage}) => {
             type="text"
             id="plot_number"
             name="plot_number"
-            value={formData.plot_number}
-            onChange={handleChange}
-
+            value={DataPackage.index}
+            readOnly
           />
         </div>
         <label >Sub district</label>
@@ -52,32 +55,32 @@ const Credential = ({DataPackage}) => {
           
           <input
             type="text"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-    
+            id="Sub_district"
+            name="Sub_district"
+            value={DataPackage.plotDocuments[DataPackage.index].address.subdistrict}
+         
+            readOnly
           />
         </div>
         <label>District</label>
         <div className="apple-form-group">
           
           <input
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-    
+            id="District"
+            name="District"
+            value={DataPackage.plotDocuments[DataPackage.index].address.district}
+          
+            readOnly
           />
         </div>
         <label>Province</label>
         <div className="apple-form-group">
           
           <input
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
+            id="Province"
+            name="Province"
+            value={DataPackage.plotDocuments[DataPackage.index].address.province}
+            readOnly
     
           />
         </div>
@@ -94,8 +97,8 @@ const Credential = ({DataPackage}) => {
             type="text"
             id="Name"
             name="Name"
-            value={formData.Name}
-            onChange={handleChange}
+            value={DataPackage.plotDocuments[DataPackage.index].address.subdistrict}
+            readOnly
 
           />
         </div>
@@ -106,8 +109,9 @@ const Credential = ({DataPackage}) => {
             type="text"
             id="Location"
             name="Location"
-            value={formData.Location}
-            onChange={handleChange}
+            value={"lat " + DataPackage.plotDocuments[DataPackage.index].data.PlotData.PlotCenter[0].toFixed(4) + ", lng " +
+             DataPackage.plotDocuments[DataPackage.index].data.PlotData.PlotCenter[1].toFixed(4) }
+            readOnly
     
           />
         </div>
@@ -117,21 +121,22 @@ const Credential = ({DataPackage}) => {
           <input
             id="Area"
             name="Area"
-            value={formData.Area}
-            onChange={handleChange}
+            value={DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area.toFixed(2) + " Rai"} 
+            readOnly
     
           />
         </div>
 
-        <label>Planting Distance</label>
+        <label style={{ color: 'green',  fontWeight: 'bold'}}>Planting Distance</label>
         <div className="apple-form-group">
           
           <input
-            id="Area"
-            name="Area"
+            type='text'
+            id="planting_distance"
+            name="planting_distance"
             value={formData.planting_distance}
             onChange={handleChange}
-    
+
           />
         </div>
        
