@@ -7,6 +7,7 @@ const Properties = ({DataPackage,editProp}) => {
     Weight:0,
     Percentage:'',
     Age:'',
+    InputDate:''
 
     
   });
@@ -46,7 +47,10 @@ const Properties = ({DataPackage,editProp}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    formData.Age = currentMonthYearAge.age
+    formData.Age = parseFloat(currentMonthYearAge.age)
+    formData.Percentage = parseFloat(formData.Percentage)
+    formData.Weight = parseFloat(formData.Weight)
+    formData.InputDate = currentMonthYearAge.formattedDate
     editProp(formData)
   };
   

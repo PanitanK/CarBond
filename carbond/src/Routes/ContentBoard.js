@@ -105,6 +105,9 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
       .catch((error) => {
         console.error('Error adding document to report collection:', error);
       });
+      setCurrmode("/option2")
+      handleModeChange('/option2'); 
+
   };
 
   const fetchReports = async () => {
@@ -122,10 +125,14 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
         fetchedReports.push({ id: doc.id, ...doc.data() });
       });
       setReports(fetchedReports);
+      console.log("Fetch Report Finish")
+
+
     } catch (error) {
       console.error('Error fetching documents from "Reports" collection:', error);
     }
   };
+
   //console.log("ihave reports")
   //console.log(reports)
   const handleExportPDF = () =>{
@@ -135,23 +142,31 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
   }
   useEffect(() => {
     setCurrmode(mode); // Update CurrMode when mode changes
-  }, [mode]);
+  }, [mode],[fetchReports]);
 
+  
   switch (Currmode) {
     case '/option1':
       return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
     case '/option2':
+      if (index === 0) {
+        return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
+      }
       return <Active DataPackage={{ userData, plotDocuments, index, reports }} CredClick={handleCredClick} PropClick={handlePropClick} Export={handleExportPDF}/>;
     case '/option3':
-      return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />
+      return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />;
     case '/option4':
+      if (index === 0) {
+        return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
+      }
       return <Credential DataPackage={{userData , plotDocuments, index}} editCred={handleCredEdit}/>;
     case '/option5':
+      if (index === 0) {
+      return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
+      }
       return <Properties DataPackage={{userData , plotDocuments, index}} editProp={handlePropAppend}/>;
-
-
     default:
-      return null; // Render null for unknown modes
+      return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
   }
 }
 

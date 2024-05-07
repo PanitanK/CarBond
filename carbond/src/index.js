@@ -17,7 +17,7 @@ import ForgotPassword from './Routes/ForgotPassword';
 import Setting from './Routes/Setting';
 import Plotregister from './Routes/Plotregister'
 import Mapframe from './Routes/Mapframe';
-import Print from './Routes/Print';
+
 
 const router = createBrowserRouter([
   {
@@ -70,10 +70,7 @@ const router = createBrowserRouter([
 
   }
   ,
-  {
-    path: "Print",
-    element:<Print/>
-  },
+
   {
     path: "/info",
     errorElement: <Err />,

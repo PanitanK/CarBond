@@ -5,8 +5,8 @@ import StaticmapwithPolygon from './StaticmapwithPolygon';
   
 const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
     //console.log("hello")
-    console.log(DataPackage.reports.length);
-   
+    console.log(DataPackage.reports);
+    console.log(DataPackage)
 
     const handleCredClick = () =>{
       CredClick()
@@ -32,7 +32,9 @@ const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
                   }}
                   
                 />
-               <button className="ClickBut" onClick={() => handleCredClick()} >Plot Credential</button>
+                <button className="ClickBut2" onClick={() => handleCredClick()} >Plot Credential</button>
+                <button className="ClickBut2" onClick={() => handlePropClick()}>Update Properties</button>
+                <button className="ClickBut2" onClick={() => handleExport()}>Export</button>
         </div>
         <div className='MapBoxInfo'>
                 <h1 style={{ marginBottom: '-1vh' }} className = "editprint">Plot No.{DataPackage.index }</h1> {/* Updated line */}
@@ -40,15 +42,43 @@ const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
                 <p style={{ marginBottom: '-3vh' } } className = "editprint">Sub-District : {DataPackage.plotDocuments[DataPackage.index].address.subdistrict}</p>
                 <p style={{ marginBottom: '-3vh' }} className = "editprint">District : {DataPackage.plotDocuments[DataPackage.index].address.district}</p>
                 <p style={{ marginBottom: '1vh' }} className = "editprint">Province : {DataPackage.plotDocuments[DataPackage.index].address.province}</p>
-                {DataPackage.reports.length >= 1 && (
+                {DataPackage.reports.length >= 1 ? (
+                    <div>
+                    
+                    <div className="table-container">
                     <p>There are {DataPackage.reports.length} reports available.</p>
+                      <table className="custom-table"> {/* Apply the 'custom-table' class */}
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Age</th>
+                            <th>N-Concentration</th>
+                            <th>Weight</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {DataPackage.reports.map((report) => (
+                            <tr key={report.id}>
+                              <td>{report.id}</td>
+                              <td>{report.InputDate}</td>
+                              <td>{report.Age}</td>
+                              <td>{report.Percentage}</td>
+                              <td>{report.Weight}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  
+                ) : (
+                  <p>No reports available.</p>
                 )}
                 
                 
      
-                <button className="ClickBut" onClick={() => handlePropClick()}>Update Properties</button>
-                <p></p>
-                <button className="ClickBut" onClick={() => handleExport()}>Export</button>
+                
       
                 
                 </div>

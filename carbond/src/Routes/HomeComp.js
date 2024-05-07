@@ -27,19 +27,16 @@ const HomeMode = ( {DataPackage, submitHomeClick, onMapboxClick} ) => {
         ) : size >= 2 ? (
    
           plotDocuments.slice(1, size).map((plotDocument, index) => (
-            <div className='Mapcolumn' onClick={() => handleMapboxClick(index)}>
-              <div className='Mapbox' key={index} >
+            <div key={`${plotDocument.id}-${index}`} className='Mapcolumn' onClick={() => handleMapboxClick(index)}>
+              <div className='Mapbox'>
                 <StaticmapwithPolygon
                   initialCenter={{
                     lat: plotDocument.data.PlotData.PlotCenter[0],
                     lng: plotDocument.data.PlotData.PlotCenter[1],
                     Plotpolygon: plotDocument.data.polygonCoordinates
                   }}
-                  
                 />
-              
               </div>
-              
               <div className='MapBoxInfo'>
                 <h1 style={{ marginBottom: '-1vh' }}>Plot No.{index + 1}</h1> {/* Updated line */}
                 <p style={{ marginBottom: '-3vh' }}>Area : {plotDocument.data.PlotData.Area} Rai</p>
@@ -48,7 +45,6 @@ const HomeMode = ( {DataPackage, submitHomeClick, onMapboxClick} ) => {
                 <p style={{ marginBottom: '1vh' }}>Province : {plotDocument.address.province}</p>
               </div>
             </div>
-            
           ))
           
         ) : (
