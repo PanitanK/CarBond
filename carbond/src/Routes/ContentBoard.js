@@ -12,7 +12,7 @@ import {  doc,setDoc, collection, getDocs } from 'firebase/firestore';
 function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
 
   const [ Currmode , setCurrmode] = useState(null);
-  
+  const [ index , setIndex] = useState(0);
   const uploadDataToPlotCollection = async (userId, data, address) => {
     try {
       const plotCollectionRef = collection(db, 'USERS', userId, 'PlotCollection');
@@ -28,8 +28,9 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
       // Set data and address fields in the new document
       await setDoc(newDocumentRef, { data, address });
       console.log('Data document added successfully:', newDocumentRef.id);
-      setCurrmode("/option2")
-      handleModeChange('/option2'); 
+      window.location.reload();
+      
+
     } catch (error) {
       console.error('Error uploading data to PlotCollection:', error);
     }
@@ -39,18 +40,43 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
     uploadDataToPlotCollection(UID,Data,Addr)
   }
 
+  const onHomeClick = () => {
+    console.log("On Home Clicking")
+    setCurrmode("/option3")
+    handleModeChange('/option3'); 
+  }
+  const handleMapboxClick = (Input) => {
+    console.log("Index clicked in ContentBoard:", index);
+    setCurrmode("/option2")
+    handleModeChange('/option2'); 
+    setIndex(Input+1)
+  };
+
+  const handleCredClick = () => {
+    console.log("Index clicked in ContentBoard:", index);
+    setCurrmode("/option4")
+    handleModeChange('/option4'); 
+
+  };
+
+  const handlePropClick = () => {
+    console.log("Index clicked in ContentBoard:", index);
+    setCurrmode("/option5")
+    handleModeChange('/option5'); 
+
+  };
+
   useEffect(() => {
     setCurrmode(mode); // Update CurrMode when mode changes
   }, [mode]);
 
   switch (Currmode) {
     case '/option1':
-      return <HomeMode DataPackage={{userData , plotDocuments }} />;
+      return <HomeMode DataPackage={{ userData, plotDocuments }} submitHomeClick={onHomeClick} onMapboxClick={handleMapboxClick} />;
     case '/option2':
-      return <Active DataPackage={{ userData, plotDocuments }} />;
+      return <Active DataPackage={{ userData, plotDocuments, index }} CredClick={handleCredClick} PropClick={handlePropClick}/>;
     case '/option3':
       return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />
-      //return <Addplot  DataPackage={{userData , plotDocuments}} onSubmit={handleDataSubmit} />;
     case '/option4':
       return <Credential DataPackage={{userData , plotDocuments}}/>;
     case '/option5':

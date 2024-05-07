@@ -33,32 +33,120 @@ const Properties = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="AddplotContainer">
-    <div className="label-input-container">
-      <label htmlFor="plotId">Plot ID:</label>
-      <input
-        type="text"
-        id="plotId"
-        name="plotId"
-        value={formData.plotId}
-        onChange={handleChange}
-        required
-      />
+    <div className='CredFill'> 
+    <h3>Plot Properties</h3>
+    <div className="apple-form-container">
+      
+      <form onSubmit={handleSubmit} className='Appleform'>
+        
+        <div className='Applefilling'> 
+         
+      <label>Plot No.</label>
+        <div className="apple-form-group">
+          <input
+            type="text"
+            id="plot_number"
+            name="plot_number"
+            value={formData.plot_number}
+            onChange={handleChange}
+
+          />
+        </div>
+        <label >Sub district</label>
+        <div className="apple-form-group">
+          
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+    
+          />
+        </div>
+        <label>District</label>
+        <div className="apple-form-group">
+          
+          <input
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+    
+          />
+        </div>
+        <label>Province</label>
+        <div className="apple-form-group">
+          
+          <input
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+    
+          />
+        </div>
+        
+       
+        
+        <button className='Applebutton'>Edit</button>
+        </div>
+
+        <div className='Applefilling'>  
+      <label>Name</label>
+        <div className="apple-form-group">
+          <input
+            type="text"
+            id="Name"
+            name="Name"
+            value={formData.Name}
+            onChange={handleChange}
+
+          />
+        </div>
+        <label >Location</label>
+        <div className="apple-form-group">
+          
+          <input
+            type="text"
+            id="Location"
+            name="Location"
+            value={formData.Location}
+            onChange={handleChange}
+    
+          />
+        </div>
+        <label>Area</label>
+        <div className="apple-form-group">
+          
+          <input
+            id="Area"
+            name="Area"
+            value={formData.Area}
+            onChange={handleChange}
+    
+          />
+        </div>
+
+        <label>Planting Distance</label>
+        <div className="apple-form-group">
+          
+          <input
+            id="Area"
+            name="Area"
+            value={formData.planting_distance}
+            onChange={handleChange}
+    
+          />
+        </div>
+       
+    
+        </div>
+
+      </form>
     </div>
-    <div className="label-input-container">
-      <label htmlFor="plotName">Plot Name:</label>
-      <input
-        type="text"
-        id="plotName"
-        name="plotName"
-        value={formData.plotName}
-        onChange={handleChange}
-        required
-      />
     </div>
-    {/* Add other input fields similarly */}
-    <button type="submit">Submit</button>
-  </form>
   );
 };
+
 export default Properties;
