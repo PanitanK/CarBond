@@ -7,23 +7,29 @@ import Addplot from './Addplot'
 import Credential from './Credential'
 import Properties from './Properties'
 import { db } from './Firebase';
-import {  addDoc, collection } from 'firebase/firestore';
+import {  doc,setDoc, collection, getDocs } from 'firebase/firestore';
 
-function ContentBoard({ mode ,userData,plotDocuments,UID}) {
-  const [ Intermediate , setIntermediate] = useState(null);
+function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
+
   const [ Currmode , setCurrmode] = useState(null);
+  
   const uploadDataToPlotCollection = async (userId, data, address) => {
     try {
-      // Create Plot Collection (subcollection) under the user's document
       const plotCollectionRef = collection(db, 'USERS', userId, 'PlotCollection');
       
-      // Add Data document to PlotCollection
-      const dataDocRef = await addDoc(plotCollectionRef, data);
-      console.log('Data document added successfully:', dataDocRef.id);
-  
-      // Add Address document to PlotCollection
-      const addressDocRef = await addDoc(plotCollectionRef, address);
-      console.log('Address document added successfully:', addressDocRef.id);
+      // Get the number of items in PlotCollection
+      const snapshot = await getDocs(plotCollectionRef);
+      const itemCount = snapshot.size;
+      
+      // Create a new document named Plot_No.X inside PlotCollection
+      const newDocumentName = `Plot_No.${itemCount}`;
+      const newDocumentRef = doc(plotCollectionRef, newDocumentName);
+      
+      // Set data and address fields in the new document
+      await setDoc(newDocumentRef, { data, address });
+      console.log('Data document added successfully:', newDocumentRef.id);
+      setCurrmode("/option2")
+      handleModeChange('/option2'); 
     } catch (error) {
       console.error('Error uploading data to PlotCollection:', error);
     }
@@ -39,7 +45,7 @@ function ContentBoard({ mode ,userData,plotDocuments,UID}) {
 
   switch (Currmode) {
     case '/option1':
-      return <HomeMode DataPackage={{userData , plotDocuments,Intermediate }} />;
+      return <HomeMode DataPackage={{userData , plotDocuments }} />;
     case '/option2':
       return <Active DataPackage={{ userData, plotDocuments }} />;
     case '/option3':

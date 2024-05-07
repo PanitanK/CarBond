@@ -1,32 +1,4 @@
-import React from 'react';
-import StaticMapComponent from './StaticMapComponent';
-import './css/Comp.css'
-import StaticmapwithPolygon from './StaticmapwithPolygon';
-const HomeMode = (DataPackage) => {
-// API KEY = AIzaSyDk2tIxfdfOg_LcDDPnULATsahlzRXT-mk
-  const userData = DataPackage.DataPackage.userData
-  const plotDocuments = DataPackage.DataPackage.plotDocuments
-  const Intermediate = DataPackage.DataPackage.Intermediate
-  //console.log(user.userData[0])
-  console.log("This is userData")
-  console.log(userData)
-  console.log(Intermediate)
-
-  return (
-    <div className='BigBox'>
-      {Intermediate == null ? (<div className='Mapbox'>
-      <h1>You have no active Projects</h1>
-      </div>
-      
-    
-    ) : (
-       
-        <div className='Mapbox'>
-        <StaticmapwithPolygon initialCenter={{ Label: "1" ,lat: Intermediate.PlotData.PlotCenter[0], lng: Intermediate.PlotData.PlotCenter[1],Plotpolygon:Intermediate.polygonCoordinates }} />  
-        
-        </div>
-      ) }
-      {/*<div className='Polymap'>
+/*<div className='Polymap'>
         <div className='BondBox'>
         <h1>Active Bond</h1>
         {Intermediate !== null ? (
@@ -59,15 +31,52 @@ const HomeMode = (DataPackage) => {
 
               
           <StaticmapwithPolygon  initialCenter={{ Label: "1" ,lat: jsonData.PlotData.PlotCenter?.[0] , lng: jsonData.PlotData.PlotCenter?.[1] , Plotpolygon:jsonData.polygonCoordinates}} />
-  </div> */}
+  </div> */
 
-
-
-
-      
-   
-    </div>
-  );
-};
-
-export default HomeMode;
+  import React from 'react';
+  import StaticMapComponent from './StaticMapComponent';
+  import './css/Comp.css'
+  import StaticmapwithPolygon from './StaticmapwithPolygon';
+  
+  const HomeMode = (DataPackage) => {
+    const userData = DataPackage.DataPackage.userData;
+    const plotDocuments = DataPackage.DataPackage.plotDocuments;
+    const Intermediate = DataPackage.DataPackage.Intermediate;
+  
+    const size = plotDocuments ? Object.keys(plotDocuments).length : 0;
+  
+ 
+    console.log("This is size: " + size);
+  
+    return (
+      <div className='BigBox'>
+        {size === 0 ? (
+          <div className='Mapbox'>
+            <h1>Loading...</h1>
+          </div>
+        ) : size >= 2 ? (
+          plotDocuments.slice(1, size).map((plotDocument, index) => (
+            <div className='Mapcolumn'>
+              <div className='Mapbox' key={index}>
+                <StaticmapwithPolygon
+                  initialCenter={{
+                    lat: plotDocument.data.PlotData.PlotCenter[0],
+                    lng: plotDocument.data.PlotData.PlotCenter[1],
+                    Plotpolygon: plotDocument.data.polygonCoordinates
+                  }}
+                  
+                />
+          
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className='Mapbox'>
+            <h1>You have no active Project</h1>
+          </div>
+        )}
+      </div>
+    );
+  };
+  
+  export default HomeMode;

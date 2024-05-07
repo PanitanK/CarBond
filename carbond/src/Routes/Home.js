@@ -29,21 +29,8 @@ function Home() {
   const handleMode = (USERMode) => {
     setMode(USERMode);
   };
-
-  const fetchPlotDocuments = async (userUID) => {
-    const dataCollectionRef = collection(db, 'USERS', userUID, 'DataCollection');
-
-    try {
-      const querySnapshot = await getDocs(dataCollectionRef);
-      const plotDocuments = querySnapshot.docs
-        .filter((doc) => doc.id.startsWith('PlotNO_'))
-        .map((doc) => doc.data());
-        
-      return plotDocuments;
-    } catch (error) {
-      console.error('Error fetching plot documents:', error);
-      return []; // Return an empty array to handle the error
-    }
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
   };
 
   useEffect(() => {
@@ -51,6 +38,10 @@ function Home() {
       try {
         const userDocRef = doc(userCollectionRef, userUID);
         const userDocSnapshot = await getDoc(userDocRef);
+  
+        const plotCollectionRef = collection(db, 'USERS', userUID, 'PlotCollection');
+        const querySnapshot = await getDocs(plotCollectionRef);
+  
         if (userDocSnapshot.exists()) {
           const USERS_UID_SubCollection = collection(userDocRef, 'ProfileCollection');
           const USERS_UID_SubCollection_Snapshot = await getDocs(USERS_UID_SubCollection);
@@ -59,23 +50,29 @@ function Home() {
         } else {
           console.log("User document does not exist.");
         }
+  
+        if (!querySnapshot.empty) {
+          
+          const plotdocs = querySnapshot.docs.map((doc) => doc.data());
+          setplotDocuments(plotdocs);
+        } else {
+          console.log("Plot documents not found.");
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-
-      const plotDocuments = await fetchPlotDocuments(userUID);
-      setplotDocuments(plotDocuments);
     };
-
+  
     if (!HasFetched) {
       fetchData();
       setFetch(true);
     }
-  }, [userUID, userCollectionRef, HasFetched]); 
+  }, [userUID, userCollectionRef, HasFetched]);
+    
 
   if (location.state == null) {
     console.log("USER IS NOT RECOGNIZED");
-  
+    
     return (
       <div className='App-header'>
         <div>
@@ -157,7 +154,7 @@ function Home() {
         </div>
   
         <div className="ContentBoard">
-          <ContentBoard mode = {mode} userData={userData} plotDocuments={plotDocuments} UID = {userUID}/>
+          <ContentBoard mode = {mode} userData={userData} plotDocuments={plotDocuments} UID = {userUID} handleModeChange={handleModeChange}/>
         </div>
       </div>
     );
