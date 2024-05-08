@@ -38,7 +38,7 @@ const Active = ({ DataPackage,CredClick,PropClick,Export }) => {
         </div>
         <div className='MapBoxInfo'>
                 <h1 style={{ marginBottom: '-1vh' }} className = "editprint">Plot No.{DataPackage.index }</h1> {/* Updated line */}
-                <p style={{ marginBottom: '-3vh'}} className = "editprint">Area : {DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area.toFixed(2)} Rai</p>
+                <p style={{ marginBottom: '-3vh'}} className = "editprint">Area : {(DataPackage.plotDocuments[DataPackage.index].data.PlotData.Area*625).toFixed(2)} Rai</p>
                 <p style={{ marginBottom: '-3vh' } } className = "editprint">Sub-District : {DataPackage.plotDocuments[DataPackage.index].address.subdistrict}</p>
                 <p style={{ marginBottom: '-3vh' }} className = "editprint">District : {DataPackage.plotDocuments[DataPackage.index].address.district}</p>
                 <p style={{ marginBottom: '1vh' }} className = "editprint">Province : {DataPackage.plotDocuments[DataPackage.index].address.province}</p>

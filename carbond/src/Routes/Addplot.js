@@ -78,7 +78,7 @@ const AddPlot = ({onSubmit}) => {
             </div>
           </div>
           </div>
-          <button className="ClickBut" onClick={() => SubmitPlot(jsonData,addressData)}>Apply</button>
+          <button className="ClickBut" onClick={() => SubmitPlot(jsonData,addressData.Area * 625)}>Apply</button>
           <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
           </>
         )}

@@ -39,7 +39,7 @@ const HomeMode = ( {DataPackage, submitHomeClick, onMapboxClick} ) => {
               </div>
               <div className='MapBoxInfo'>
                 <h1 style={{ marginBottom: '-1vh' }}>Plot No.{index + 1}</h1> {/* Updated line */}
-                <p style={{ marginBottom: '-3vh' }}>Area : {plotDocument.data.PlotData.Area} Rai</p>
+                <p style={{ marginBottom: '-3vh' }}>Area : {plotDocument.data.PlotData.Area*625} Rai</p>
                 <p style={{ marginBottom: '-3vh' }}>Sub-District : {plotDocument.address.subdistrict}</p>
                 <p style={{ marginBottom: '-3vh' }} >District : {plotDocument.address.district}</p>
                 <p style={{ marginBottom: '1vh' }}>Province : {plotDocument.address.province}</p>
