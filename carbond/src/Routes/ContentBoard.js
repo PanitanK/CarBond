@@ -35,11 +35,9 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
       console.error('Error uploading data to PlotCollection:', error);
     }
   };
-
   const handleDataSubmit = (Data,Addr) =>{
     uploadDataToPlotCollection(UID,Data,Addr)
   }
-
   const onHomeClick = () => {
     //console.log("On Home Clicking")
     setCurrmode("/option3")
@@ -53,21 +51,18 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
     fetchReports(Input+1)
     setIndex(Input+1)
   };
-
   const handleCredClick = () => {
     console.log("Index clicked in ContentBoard:", index);
     setCurrmode("/option4")
     handleModeChange('/option4'); 
 
   };
-
   const handlePropClick = () => {
     console.log("Index clicked in ContentBoard:", index);
     setCurrmode("/option5")
     handleModeChange('/option5'); 
 
   };
-
   const handleCredEdit = async (data) => {
     //console.log("Index clicked in ContentBoard:", index);
     //console.log(data)
@@ -87,7 +82,6 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
     
 
   };
-
   const handlePropAppend = async (data) => {
     //console.log("Index clicked in ContentBoard:", index);
     //console.log(data);
@@ -109,7 +103,6 @@ function ContentBoard({ mode ,userData,plotDocuments,UID, handleModeChange}) {
       handleModeChange('/option2'); 
 
   };
-
   const fetchReports = async () => {
     const plotCollectionRef = collection(db, 'USERS', UID, 'PlotCollection');
     const plotDocumentRef = doc(plotCollectionRef, `Plot_No.${index}`);

@@ -21,23 +21,6 @@ function Register() {
   const [Lastname,regLastName] = useState('');
   const navigate = useNavigate();
 
-  /*const createUserFolder = async (userId) => {
-    try {
-      // Create a user-specific folder using the user's UID
-      const userFolderRef = ref(storage,  userId + '/');
-      uploadBytes(userFolderRef , placeholderImage  ).then(()=>{
-        console.log("Uploaded")
-
-      })
-
-  
-     
-
-    } catch (error) {
-      console.error('Error creating user folder: ', error);
-    }
-  };
-  */
   const createUserDocumentAndSubcollections = async (userId, dataCollection, profileData) => {
     try {
       // Create user document using UID
@@ -92,10 +75,8 @@ function Register() {
         Credit_Own : 0 ,
         Created_Date : `${day}/${month}/${year}`,
         Expiry_Date : `${day}/${month}/${year+1}`
-
       
       };
-
       // Create user document and storage folder simultaneously
       await Promise.all([
         createUserDocumentAndSubcollections(user.uid, dataCollection, profileData),

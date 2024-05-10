@@ -9,9 +9,18 @@ const AddPlot = ({onSubmit}) => {
   const [addressData, setAddressData] = useState({ subdistrict: '', district: '', province: '' });
 
   const handleAddressUpdate = (address) => {
-  setAddressData(address); // Update state with address data
+    const updatedAddress = {
+      subdistrict: address.subdistrict || 'N/A',
+      district: address.district || 'N/A',
+      province: address.province || 'N/A',
+    };
+  
+    setAddressData(updatedAddress); // Update state with address data
+    console.log("This is address from addplot")
+    console.log(updatedAddress);
   console.log("This is address from addplot")
   console.log(address)
+
 
 };  
   const handleMapClick = (Bundle) => {
@@ -78,7 +87,7 @@ const AddPlot = ({onSubmit}) => {
             </div>
           </div>
           </div>
-          <button className="ClickBut" onClick={() => SubmitPlot(jsonData,addressData.Area * 625)}>Apply</button>
+          <button className="ClickBut" onClick={() => SubmitPlot(jsonData,addressData)}>Apply</button>
           <button className="ClickBut" onClick={() => setIsMapFrameVisible(!isMapFrameVisible)}>Revert</button>
           </>
         )}
